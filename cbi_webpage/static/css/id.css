@@ -1,0 +1,2295 @@
+﻿/** Begin for describing the id in Demo **/
+#spinnerArea{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+#spinnerBackgroundArea{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #6D6D6D;
+  opacity: 0.5;
+
+}
+
+#popUpWrapperArea{
+  position: absolute;
+  height: 4%;
+  width: 100%;
+  z-index: 10;
+}
+
+#popUpTextWrapper{
+  position: absolute;
+  color: white;
+  height: 55%;
+  width: 96%;
+  left: 1%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 1.5vh;
+  font-family: "나눔고딕";
+  text-overflow: ellipsis;
+  overflow-y: auto;
+}
+
+#popUpTextWrapper::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #ffffff;
+}
+
+#popUpTextWrapper::-webkit-scrollbar
+{
+  width: 1em;
+  background-color: #ffffff;
+}
+
+#popUpTextWrapper::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #118CCF;
+}
+
+#closeButton{
+  position: absolute;
+  cursor: pointer;
+  width: 2.5vmin;
+  height: 2.5vmin;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0.5%;
+}
+
+#titleArea{
+  position: relative;
+  display: block;
+  top: 2.5%;
+  left: 0px;
+  width: 40%;
+  height: 18%;
+  margin: auto;
+}
+
+#separateTitleArea{
+  position: relative;
+  display: block;
+  top: 6%;
+  left: 0px;
+  width: 90%;
+  height: 18%;
+  margin: auto;
+}
+
+#igvTitleArea{
+  position: relative;
+  display: block;
+  top: 16%;
+  left: 0px;
+  width: 60%;
+  height: 18%;
+  margin: auto;
+}
+
+#separateTitleLine{
+  position: relative;
+  top: 5%;
+  left: 0px;
+  width: 85%;
+  height: 5%;
+  margin: auto;
+  background-color: #00378C;
+}
+
+#separateTempTitleLine{
+  position: relative;
+  top: 5%;
+  left: 0px;
+  width: 85%;
+  height: 5%;
+  margin: auto;
+  background-color: #118CCF;
+}
+
+/*#activeInputArea {
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 25%;
+}
+*/
+
+#linkArea{
+  display: block;
+  color: #00378C;
+}
+
+#linkTempArea{
+
+  width: 70vmin;
+  display: block;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+  color: #118CCF;
+}
+
+#mainTitle{
+  width: 27.5vh;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "MuseoSans 500";
+}
+
+#subTitle{
+  font-family: "나눔고딕Bold";
+  width: 100%;
+  height: 15%;
+  padding-top: 1.5%;
+  margin: auto;
+  text-align: center;
+  font-size: 2vh;
+}
+
+#subDetailTitle{
+	font-family: "나눔고딕";
+  width: 100%;
+  height: 10%;
+  margin: auto;
+  text-align: center;
+  font-size: 1.5vh;
+}
+
+#menuBackgroundArea{
+
+  z-index: -1;
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 20%;
+  margin: 0 auto;
+  height: 3.9%;
+  width: 100%;
+  background-color: #00378C;
+  color: #ffffff;
+
+}
+
+#menuArea{
+
+  position: relative;
+  display: block;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  color: #ffffff;
+}
+
+#subMenuArea{
+
+  position: relative;
+  display: block;
+  top: 0%;
+  left: 0px;
+  height: 66%;
+  width: 100%;
+  margin: auto;
+  color: #ffffff;
+
+}
+
+#activeInputArea {
+
+  position: absolute;
+  width: 100%;
+  height: 70%;
+  top: 26%;
+}
+
+#igvInputArea {
+  position: absolute;
+  width: 35%;
+  height: 15%;
+  left: 32.5%;
+  top: 10%;
+  background-color: #00378C;
+  border-radius: 1vh;
+  text-align: center;
+}
+
+#keggArea {
+
+  position: absolute;
+  width: 100%;
+  height: 82.5%;
+  top: 12.5%;
+}
+
+#keggInputArea {
+  position: absolute;
+  width: 35%;
+  height: 80%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 10%;
+  background-color: #118CCF;
+  border-radius: 2em;
+  text-align: center;
+}
+
+#keggText{
+  position: absolute;
+  z-index: 5;
+  top: 4%;
+  left: 5%;
+  font-family: "나눔고딕Bold";
+  font-size: 1.5vmin;
+  color: #ffffff;
+}
+
+#keggExampleText{
+  position: absolute;
+  z-index: 5;
+  top: 8%;
+  left: 5%;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  color: #ffffff;
+}
+
+#keggBackgroundArea {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  border-radius: 2em;
+}
+
+#keggTextAreaHeight {
+  position: absolute;
+  height: 80%;
+  width: 90%;
+  top: 22.5%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 2em;
+  background-color: #ffffff;
+  }
+
+#keggTextInputWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 5%;
+  margin: auto;
+  appearance: none;
+  box-shadow: none;
+}
+
+#keggTextInput {
+
+  width: 90%;
+  height: 90%;
+  background-color: #ffffff;
+  box-shadow: none;
+  outline: none;
+  border: 0;
+  font-size: 1.5vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  resize: none;
+}
+
+#keggTextInput::-webkit-input-placeholder {
+  color: #118CCF;
+}
+
+#keggTextInput::-moz-placeholder {
+  color: #118CCF;
+}
+
+#keggTextInput:-ms-input-placeholder {
+  color: #118CCF;
+}
+
+#keggTextInput:-moz-placeholder {
+  color: #118CCF;
+}
+
+#keggTextInput:focus {
+
+  width: 90%;
+  height: 90%;
+  background-color: #ffffff;
+  box-shadow: none;
+  top: 5%;
+  outline: none;
+  border: 0;
+  color: #118CCF;
+  font-size: 1.5vmin;
+  font-family: "THE도담R";
+
+}
+
+#keggTextInput::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #ffffff;
+}
+
+#keggTextInput::-webkit-scrollbar
+{
+  width: 1em;
+  background-color: #ffffff;
+}
+
+#keggTextInput::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #118CCF;
+}
+
+#keggMoreExampleButton
+{
+  position: absolute;
+  z-index: 35;
+  top: 12%;
+  left: 5%;
+  width: 10vmin;
+  border-radius: 1vmin;
+  line-height: 2vmin;
+  font-family: "THE도담R";
+  background: #FFFFFF;
+  color: #118CCF;
+  font-size: 1.2vmin;
+  text-align: center;
+}
+
+#keggUsageButton
+{
+  position: absolute;
+  z-index: 35;
+  top: 12%;
+  left: 14vmin;
+  width: 10vmin;
+  border-radius: 1vmin;
+  line-height: 2vmin;
+  font-family: "THE도담R";
+  background: #FFFFFF;
+  color: #118CCF;
+  font-size: 1.2vmin;
+  text-align: center;
+}
+
+#keggExplanationButtonWrapper{
+  position: absolute;
+  width: 25%;
+  height: 5%;
+  left: 0;
+  right: 0;
+  bottom: 1%;
+  margin: 0 auto;
+}
+
+#keggSampleDownloadButton {
+  position: absolute;
+  width: 40%;
+  height: 3vmin;
+  left: 0;
+  font-size: 1.2vmin;
+  text-align: center;
+  font-family: "THE도담R";
+  background-color: #ffffff;
+  border-radius: 2vmin;
+  color: #118CCF;
+  line-height: 3vmin;
+  cursor: pointer;
+}
+
+#keggExplanationCloseButton {
+  position: absolute;
+  width: 40%;
+  height: 3vmin;
+  right: 0;
+  font-size: 1.2vmin;
+  text-align: center;
+  font-family: "THE도담R";
+  background-color: #ffffff;
+  border-radius: 2vmin;
+  color: #118CCF;
+  line-height: 3vmin;
+  cursor: pointer;
+}
+
+#keggSubmitButton {
+  display: block;
+  position: absolute;
+  width: 20%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 5%;
+  font-size: 2vh;
+  font-family: "나눔고딕";
+  text-align: center;
+  border: 0.15vh solid #ffffff;
+  border-radius: 1vh;
+  background:none;
+  color: #ffffff;
+}
+
+#submitButton {
+  display: block;
+  position: relative;
+  width: 20%;
+  margin: auto;
+  top: 10%;
+  font-size: 2vmin;
+  font-family: "나눔고딕";
+  border: 0.15vh solid #ffffff;
+  text-align: center;
+  border-radius: 1vmin;
+  background:none;
+  color: #ffffff;
+}
+#igvSubmitButton {
+  display: block;
+  position: absolute;
+  width: 20%;
+  left: 40%;
+  top: 70%;
+  font-size: 2vh;
+  font-family: "나눔고딕";
+  border: 0.15vh solid #ffffff;
+  text-align: center;
+  border-radius: 1vh;
+  background: none;
+  color: #ffffff;
+}
+
+#normalContentTitle{
+  width: 100%;
+  height: 10%;
+  margin: auto;
+  text-align: center;
+  font-size: 9vh;
+  color: #00378C;
+  font-family: "THE도담R";
+}
+
+#normalContentArea{
+
+  position: absolute;
+  height: 67.5%;
+  width: 100%;
+  display: block;
+  top: 32.5%;
+  left: 0px;
+  color: #118CCF;
+  font-family: "THE도담R";
+
+}
+
+#genomTraxArea{
+
+  position: absolute;
+  height: 90%;
+  width: 100%;
+  display: block;
+  top: 10%;
+  left: 0px;
+
+}
+
+#activeContentLine{
+  position: relative;
+  top: 7%;
+  width: 80%;
+  height: 0.2%;
+  margin: auto;
+  background-color: #118CCF;
+}
+
+#activeContentArea{
+
+  position: relative;
+  height: 60%;
+  width: 75%;
+  top: 10%;
+  left:0;
+  right:0;
+  margin:0 auto;
+  display: block;
+  background-color: #ffffff;
+
+}
+
+#activeContentTitle{
+  position: relative;
+  top: 6%;
+  width: 100%;
+  height: 11%;
+  margin: auto;
+  text-align: center;
+   font-size: 9vh; 
+  font-size: 5vh;
+  color: #118CCF;
+  background-color: #ffffff;
+  font-family: "THE도담R";
+}
+
+#activeArticleTitle{
+  position: relative;
+  top: 12%;
+  width: 100%;
+  height: 11%;
+  margin: auto;
+  text-align: center;
+  font-size: 4vh;
+  color: #118CCF;
+  background-color: #ffffff;
+  font-family: "THE도담R";
+}
+
+#tabContentArea{
+
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: block;
+  top: 24.0%;
+  left: 0px;
+  background-color: #ffffff;
+  height: 1000px;
+
+}
+
+#introTitle{
+
+  position: absolute;
+  display: block;
+  top: 5%;
+  left:0;
+  right:0;
+  margin:0 auto;
+  margin: auto;
+  color: #00378C;
+  font-family: "THE도담B";
+  font-size: 4vh;
+  text-align: center;
+}
+
+#introDetail{
+
+  position: absolute;
+  display: block;
+  width: 80vmin;
+  top: -5%;
+  left:0%;
+  right:0;
+  margin:0 auto;
+  color: #000000;
+  font-family: "THE도담R";
+  font-size: 1.8vh;
+  text-align: left;
+}
+
+#introImageWrapper {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 70vmin;
+  height: 52.57vmin;
+}
+
+#objectiveTitle{
+
+  position: absolute;
+  display: block;
+  top: 26%;
+  left:0;
+  right:0;
+  margin:0 auto;
+  color: #00378C;
+  font-family: "THE도담B";
+  font-size: 4vh;
+  text-align: center;
+}
+
+#objectiveDetail{
+
+  position: absolute;
+  display: block;
+  top: 39%;
+  left:0;
+  right:0;
+  margin: auto;
+  color: #00378C;
+  font-family: "THE도담R";
+  font-size: 1.8vh;
+  text-align: left;
+}
+
+
+#paginationWrapper {
+
+  top: 3%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: #000000;
+  font-family: "나눔고딕Bold";
+  font-size: 1.5vh;
+
+}
+
+#paginationLinkWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  top: 7%;
+  color: #000000;
+  font-family: "나눔고딕Bold";
+  font-size: 1.5vh;
+}
+
+#selectAllButton {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  top: 0%;
+  left: 61.5%;
+  width: 5%;
+  height: 3%;
+  font-size: 1.1vh;
+  font-family: "나눔고딕";
+  border-radius: 1.5vh;
+  background: #118CCF;
+  color: #ffffff;
+}
+
+#downloadButton {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  top: 0%;
+  left: 67%;
+  width: 5%;
+  height: 3%;
+  font-size: 1.1vh;
+  font-family: "나눔고딕";
+  border-radius: 1.5vh;
+  background: #118CCF;
+  color: #ffffff;
+}
+
+#downloadForm {
+  position: absolute;
+  height: 100%;
+}
+
+#inputTextLine {
+  position: absolute;
+  top: 110%;
+  left: -10%;
+  height: 0.3%;
+  width: 120%;
+  background-color: #ffffff;
+}
+
+#inputTextFileLine {
+  position: absolute;
+  top: 150%;
+  height: 0.3%;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+#keggInputTextLine {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 0.2%;
+  width: 120%;
+  background-color: #ffffff;
+}
+
+#igv_browser {
+  position: absolute;
+  width: 85%;
+  height: 95%;
+  overflow-y: auto;
+}
+
+#igv_browser::-webkit-scrollbar-track
+{
+  background-color: #ffffff;
+  border-radius: 1em;
+}
+
+#igv_browser::-webkit-scrollbar
+{
+  width: 1em;
+  background-color: #ffffff;
+  border-radius: 1em;
+}
+
+#igv_browser::-webkit-scrollbar-thumb
+{
+  background-color: #C4C4C4;
+  border-radius: 1em;
+}
+
+#genometraxResultImageWrapper
+{
+  position: absolute;
+  width: 83.43vmin;
+  height: 9vmin;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: -5;
+}
+
+#genomeTraxFirstButton
+{
+  position: absolute;
+  width: 4%;
+  height: 2vmin;
+  top: 94%;
+  left: 38%;
+  border-radius: 1em;
+  background-color: #118CCF;
+  color: #FFFFFF;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vmin;
+  font-size: 1vmin;
+}
+
+#genomeTraxFirstButton:active
+{
+  background-color: #ffffff;
+  color: #118CCF;
+  border: 0.2vmin solid #118CCF;
+  width: 3.8%;
+  height: 1.6vmin;
+  line-height: 1.8vmin;
+}
+
+#genomeTraxPreviousButton
+{
+  position: absolute;
+  width: 4%;
+  height: 2vmin;
+  top: 94%;
+  left: 43%;
+  border-radius: 1em;
+  background-color: #118CCF;
+  color: #FFFFFF;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vmin;
+  font-size: 1vmin;
+}
+
+#genomeTraxPreviousButton:active
+{
+  background-color: #ffffff;
+  color: #118CCF;
+  border: 0.2vmin solid #118CCF;
+  width: 3.8%;
+  height: 1.6vmin;
+  line-height: 1.8vmin;
+}
+
+#genomeTraxIndex
+{
+  position: absolute;
+  width: 9vmin;
+  height: 2vmin;
+  top: 94%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: #118CCF;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vmin;
+  font-size: 1vmin;
+}
+
+#genomeTraxNextButton
+{
+  position: absolute;
+  width: 4%;
+  height: 2vmin;
+  top: 94%;
+  left: 53%;
+  border-radius: 1em;
+  background-color: #118CCF;
+  color: #FFFFFF;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vmin;
+  font-size: 1vmin;
+}
+
+#genomeTraxNextButton:active
+{
+  background-color: #ffffff;
+  color: #118CCF;
+  border: 0.2vmin solid #118CCF;
+  width: 3.8%;
+  height: 1.6vmin;
+  line-height: 1.8vmin;
+}
+
+#genomeTraxLastButton
+{
+  position: absolute;
+  width: 4%;
+  height: 2vmin;
+  top: 94%;
+  left: 58%;
+  border-radius: 1em;
+  background-color: #118CCF;
+  color: #FFFFFF;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vmin;
+  font-size: 1vmin;
+}
+
+#genomeTraxLastButton:active
+{
+  background-color: #ffffff;
+  color: #118CCF;
+  border: 0.2vmin solid #118CCF;
+  width: 3.8%;
+  height: 1.6vmin;
+  line-height: 1.8vmin;
+}
+
+#genomeTraxSwitchButtonWrapper{
+  position: absolute;
+  display: inline-block;
+  float: left;
+  width: 15vmin;
+  height: 3.5vmin;
+  top: 0.5vmin;
+  right: 7.5%;
+}
+
+#genomeTraxAllText
+{
+  position: absolute;
+  top: 1.3vmin;
+  width: 5vmin;
+  height: 3.5vmin;
+  color: #118CCF;
+  font-family: "나눔고딕Bold";
+  line-height: 1vmin;
+  font-size: 1vmin;
+}
+
+#genomeTraxSwitchButton
+{
+  position: absolute;
+  left: 14%;
+  width: 3.3vmin;
+  height: 3.5vmin;
+}
+
+#genomeTraxCurrentText
+{
+  position: absolute;
+  top: 1.3vmin;
+  left: 41%;
+  width: 5vmin;
+  height: 3.5vmin;
+  color: #118CCF;
+  font-family: "나눔고딕Bold";
+  line-height: 1vmin;
+  font-size: 1vmin;
+}
+
+#genomeTraxDownloadButtonWrapper
+{
+  position: absolute;
+  width: 7vmin;
+  height: 2vmin;
+  top: 1vmin;
+  right: 5%;
+  border: 0.25vmin solid;;
+  border-color: #118CCF;
+  border-radius: 0.6em;
+  background-color: #FFFFFF;
+  color: #118CCF;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vmin;
+  font-size: 1.1vmin;
+
+}
+
+.genomeTraxDownloadButton
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0%;
+  color: #118CCF !important;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vmin;
+  font-size: 1.1vmin;
+
+}
+
+.genomeTraxDownloadButton:hover
+{
+  cursor:pointer;
+}
+
+.genomeTraxDownloadButton:active
+{
+  background-color: #118CCF;
+  color: #ffffff;
+}
+
+#genomeTraxArea
+{
+  position: absolute;
+  top: 0%;
+  left: 20%;
+  height: 100%;
+  width: 60%;
+  border-radius: 2em 2em 2em 2em;
+  border-style: solid;
+  border-color: #118CCF;
+}
+
+#selectUpperOptionArea
+{
+  position: absolute;
+  width: 50%;
+  height: 15%;
+  border-radius: 0em 0em 0em 0em;
+  border-width: 0 0 medium 0;
+  border-style: dashed;
+  border-color: #118CCF;
+}
+
+#selectReferenceText
+{
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  font-family: "나눔고딕Bold";
+  color: #118CCF;
+  font-size: 1.3vmin;
+}
+
+#referenceGenomeWrapper
+{
+  position: absolute;
+  top: 57%;
+  left: 10%;
+  width: 100%;
+  height: 10%;
+  font-family: "THE도담R";
+  color: #118CCF;
+  font-size: 1.2vmin;
+}
+
+#hg18Text
+{
+  position: absolute;
+  color: #118CCF;
+  left: 0%;
+}
+
+#hg19Text
+{
+  position: absolute;
+  color: #118CCF;
+  left: 30%;
+}
+
+#hg38Text
+{
+  position: absolute;
+  color: #118CCF;
+  left: 60%;
+}
+
+#selectLowerOptionArea
+{
+  position: absolute;
+  width: 50%;
+  height: 75%;
+  top: 13%;
+  border-radius: 0em;
+  border-width: 0;
+  border-style: solid;
+  border-color: #118CCF;
+}
+
+#selectDatabaseText
+{
+  position: absolute;
+  top: 6%;
+  left: 5%;
+  font-family: "나눔고딕Bold";
+  color: #118CCF;
+  font-size: 1.3vmin;
+}
+
+#manual_button
+{
+  margin: 15px 0;
+}
+
+.selectDatabaseAllButton
+{
+  position: absolute;
+  top: 6.2%;
+  right: 5%;
+  width: 15vmin;
+  height: 2vmin;
+  font-family: "THE도담R";
+  background-color: #118CCF;
+  color: #ffffff;
+  border-radius: 1vmin;
+  line-height: 2vmin;
+  font-size: 1.2vmin;
+  text-align: center;
+}
+
+.selectDatabaseAllButton:active
+{
+  background-color: #ffffff;
+  height: 1.6vmin;
+  width: 14.6vmin;
+  border: 0.2vmin solid #118CCF;
+  line-height: 1.7vmin;
+  color: #118CCF;
+}
+
+#dataBaseWrapper
+{
+  position: absolute;
+  font-family: "THE도담R";
+  top: 13%;
+  left: 5%;
+  width: 100%;
+  height: 100%;
+  color: #118CCF;
+  font-size: 1.3vmin;
+}
+
+#searchArea
+{
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  border-radius: 0em 1.5em 1.5em 0em;
+  border-color: #118CCF;
+  background: #118CCF;
+}
+
+#mutationsAndVariantsText
+{
+  font-family: "THE도담B";
+  font-size: 1.2vmin;
+}
+
+#mutationsAndVariantsWrapper
+{
+    position: absolute;
+    left: 3%;
+    top: 4%;
+    width: 100%;
+    font-weight: normal;
+    font-size: 1.2vmin;
+}
+
+#regulatoryFeaturesText
+{
+  position: absolute;
+  font-family: "THE도담B";
+  top: 38%;
+  font-size: 1.2vmin;
+}
+
+#regulatoryFeaturesWrapper
+{
+    position: absolute;
+    left: 3%;
+    top: 42%;
+    width: 100%;
+    font-weight: normal;
+    font-size: 1.2vmin;
+}
+
+#geneFunctionalAssignmentsText
+{
+  position: absolute;
+  font-family: "THE도담B";
+  width: 100%;
+  top: 74%;
+  font-size: 1.2vmin;
+}
+
+#geneFunctionalAssignmentsWrapper
+{
+    position: absolute;
+    left: 3%;
+    top: 78%;
+    width: 100%;
+    font-weight: normal;
+    font-size: 1.2vmin;
+}
+
+#coordinatesSearchWrapper
+{
+  position: absolute;
+  width: 100%;
+  height: 33.5%;
+}
+
+#coordinatesSearchTempWrapper
+{
+  position: absolute;
+  width: 100%;
+  height: 70%;
+}
+
+#coordinatesSearchText
+{
+  position: absolute;
+  top: 3%;
+  left: 5%;
+  font-family: "나눔고딕Bold";
+  color: #FFFFFF;
+  font-size: 1.3vmin;
+}
+
+#coordinatesSearchExampleText
+{
+  position: absolute;
+  z-index: 5;
+  top: 11%;
+  left: 5%;
+  font-family: "THE도담R";
+  color: #FFFFFF;
+  font-size: 1.2vmin;
+}
+
+#coordinatesSearchMoreExampleButton
+{
+  position: absolute;
+  z-index: 35;
+  top: 19%;
+  left: 5%;
+  width: 10vmin;
+  border-radius: 1vmin;
+  line-height: 2vmin;
+  font-family: "THE도담R";
+  background-color: #FFFFFF;
+  color: #118CCF;
+  font-size: 1.2vmin;
+  text-align: center;
+  cursor: pointer;
+}
+
+#coordinatesSearchMoreExampleButton:active
+{
+  background-color: #118CCF;
+  color: #FFFFFF;
+  width: 9.6vmin;
+  height: 1.6vmin;
+  line-height: 1.7vmin;
+  border: 0.2vmin solid #FFFFFF;
+}
+
+#coordinatesSearchTextAreaHeight {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+#coordinatesSearchTextInputWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  top: 5%;
+  appearance: none;
+  box-shadow: none;
+}
+
+#coordinatesSearchTextInput {
+  width: 90%;
+  height: 90%;
+  background-color: #ffffff;
+  box-shadow: none;
+  outline: none;
+  border: 0;
+  color: #118CCF;
+  font-size: 1.3vmin;
+  font-family: "THE도담R";
+  resize: none;
+}
+
+#coordinatesSearchTextInput:focus {
+
+  width: 90%;
+  height: 90%;
+  background-color: #ffffff;
+  box-shadow: none;
+  outline: none;
+  border: 0;
+  color: #118CCF;
+  font-size: 1.3vmin;
+  font-family: "THE도담R";
+
+}
+
+#coordinatesSearchTextInput::-webkit-input-placeholder {
+  color: #118CCF;
+}
+
+#coordinatesSearchTextInput::-moz-placeholder {
+  color: #118CCF;
+}
+
+#coordinatesSearchTextInput:-ms-input-placeholder {
+  color: #118CCF;
+}
+
+#coordinatesSearchTextInput:-moz-placeholder {
+  color: #118CCF;
+}
+
+#coordinatesSearchTextInput::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #ffffff;
+}
+
+#coordinatesSearchTextInput::-webkit-scrollbar
+{
+  width: 1em;
+  background-color: #ffffff;
+}
+
+#coordinatesSearchTextInput::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #118CCF;
+}
+
+/* id -> css 이전 부분 */
+.coordinatesGenesSubmitButton {
+  display: block;
+  position: relative;
+  width: 20%;
+  margin: auto;
+  top: 5%;
+  font-size: 1.5vmin;
+  font-family: "나눔고딕";
+  border: 0.15vh solid #ffffff;
+  text-align: center;
+  border-radius: 1vmin;
+  background:none;
+  color: #ffffff;
+}
+
+.coordinatesGenesSubmitButton:active {
+  background-color: #ffffff;
+  color: #118CCF;
+}
+
+#genesSearchWrapper
+{
+  position: absolute;
+  width: 100.5%;
+  height: 33.5%;
+  top: 50%;
+  border-width: medium 0 0 0;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+#genesSearchText
+{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  font-family: "나눔고딕Bold";
+  color: #FFFFFF;
+  font-size: 1.3vmin;
+}
+
+#genesSearchExampleText
+{
+  position: absolute;
+  top: 13%;
+  left: 5%;
+  font-family: "THE도담R";
+  color: #FFFFFF;
+  font-size: 1.2vmin;
+}
+
+#genesSearchTextAreaHeight
+{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+#genesSearchTextInputWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  top: 5%;
+  appearance: none;
+  box-shadow: none;
+}
+
+#genesSearchTextInput {
+  width: 90%;
+  height: 90%;
+  background-color: #ffffff;
+  box-shadow: none;
+  outline: none;
+  border: 0;
+  color: #118CCF;
+  font-size: 1.3vmin;
+  font-family: "THE도담R";
+  resize: none;
+}
+
+#genesSearchTextInput::-webkit-input-placeholder {
+  color: #118CCF;
+}
+
+#genesSearchTextInput::-moz-placeholder {
+  color: #118CCF;
+}
+
+#genesSearchTextInput:-ms-input-placeholder {
+  color: #118CCF;
+}
+
+#genesSearchTextInput:-moz-placeholder {
+  color: #118CCF;
+}
+
+#genesSearchTextInput::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #ffffff;
+}
+
+#genesSearchTextInput::-webkit-scrollbar
+{
+  width: 1em;
+  background-color: #ffffff;
+}
+
+#genesSearchTextInput::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #118CCF;
+}
+
+#genesSearchTextInput:focus {
+
+  width: 90%;
+  height: 90%;
+  background-color: #ffffff;
+  box-shadow: none;
+  outline: none;
+  border: 0;
+  color: #118CCF;
+  font-size: 1.3vmin;
+  font-family: "THE도담R";
+
+}
+
+#genesSubmitButton
+{
+  display: block;
+  position: relative;
+  width: 20%;
+  margin: auto;
+  top: 7%;
+  font-family: "나눔고딕";
+  border: 0.15vh solid #ffffff;
+  text-align: center;
+  font-size: 1.5vmin;
+  border-radius: 1vmin;
+  background:none;
+  color: #ffffff;
+}
+
+#genesSubmitButton:active {
+  background-color: #ffffff;
+  color: #118CCF;
+}
+
+#currentDatabaseWrapper
+{
+  position: absolute;
+  width: 28vmin;
+  height: 2vmin;
+  top: 1vmin;
+  left: 5%;
+  color: #118CCF;
+  border: 0.25vmin solid;
+}
+
+#currentDatabase
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0%;
+  color: #118CCF;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vmin;
+  font-size: 1vmin;
+}
+
+#selectDatabaseArrow
+{
+  position: absolute;
+  top: 35%;
+  right: 3%;
+  width: 0.8vmin;
+  height: 0.8vmin;
+  z-index: -1;
+}
+
+#databaseListWrapper
+{
+  position: absolute;
+  width: 28.45vmin;
+  top: 3.3vmin;
+  left: 5%;
+  font-size: 1vmin;
+  color: #ffffff;
+  font-family: "나눔고딕";
+  background-color: #118CCF;
+  z-index: 10;
+}
+
+#databaseList
+{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 5%;
+  right: 0%;
+  color: #ffffff;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2vh;
+  font-size: 1vmin;
+}
+
+#hg18RadioButtonImage
+{
+  position: absolute;
+  z-index: 5;
+  left: -4%;
+  top: -15%;
+  width: 1.2vmin;
+  height: 1.2vmin;
+}
+
+#hg19RadioButtonImage
+{
+  position: absolute;
+  z-index: 5;
+  left: 26%;
+  top: -15%;
+  width: 1.3vmin;
+  height: 1.3vmin;
+}
+
+#hg38RadioButtonImage
+{
+  position: absolute;
+  z-index: 5;
+  left: 56%;
+  top: -15%;
+  width: 1.2vmin;
+  height: 1.2vmin;
+}
+
+
+#genometraxMoreExamplesPopUpWrapper
+{
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+}
+
+
+#genometraxMoreExamplesPopUp
+{
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  background: #6D6D6D;
+  opacity: 0.5;
+}
+
+#genometraxMoreExamplesPopUpCloseButton
+{
+  position: absolute;
+  height: 2vmin;
+  width: 2vmin;
+  top: -2vmin;
+  right: -2vmin;
+  opacity: 1;
+  z-index: 100;
+}
+
+#genometraxMoreExamplesPopUpBox
+{
+  position: absolute;
+  height: 15vmin;
+  width: 70vmin;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  border-radius: 2vmin;
+  opacity: 1;
+  z-index: 100;
+}
+
+#genometraxMoreExamplesfirstLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 2vmin;
+  width: 70vmin;
+  top: 2vmin;
+  left: 5vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#genometraxMoreExamplesFirstLineZeroText
+{
+  width: 17%;
+  float: left
+}
+
+#genometraxMoreExamplesFirstLineFirstText
+{
+  width: 22%;
+  float: left
+}
+
+#genometraxMoreExamplesFirstLineSecondText
+{
+  width: 9%;
+  float: left
+}
+
+#genometraxMoreExamplesFirstLineThirdText
+{
+  width: 20%;
+  float: left
+}
+
+#genometraxMoreExamplesFirstLineFourthText
+{
+  width: 9%;
+  float: left
+}
+
+#genometraxMoreExamplesFirstLineFifthText
+{
+  width: 20%;
+  float: left
+}
+
+#genometraxMoreExamplesSecondLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 1vmin;
+  width: 70vmin;
+  top: 5vmin;
+  left: 17vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#genometraxMoreExamplesSecondLineFirstText
+{
+  width: 30%;
+  float: left
+}
+
+
+#genometraxMoreExamplesThirdLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 1vmin;
+  width: 70vmin;
+  top: 6.6vmin;
+  left: 16.5vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#genometraxMoreExamplesThirdLineFirstText
+{
+  width: 39%;
+  float: left
+}
+
+#genometraxMoreExamplesThirdLineSecondText
+{
+  width: 30%;
+  float: left
+}
+
+#genometraxMoreExamplesFourthLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 1vmin;
+  width: 70vmin;
+  top: 8.2vmin;
+  left: 15.1vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#genometraxMoreExamplesFourthLineFirstText
+{
+  width: 65%;
+  float: left
+}
+
+#genometraxMoreExamplesFourthLineSecondText
+{
+  width: 30%;
+  float: left
+}
+
+#genometraxMoreExamplesFifthLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 1vmin;
+  width: 70vmin;
+  top: 9.8vmin;
+  left: 15.2vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#genometraxMoreExamplesFifthLineFirstText
+{
+  width: 41%;
+  float: left
+}
+
+#genometraxMoreExamplesFifthLineSecondText
+{
+  width: 23.8%;
+  float: left
+}
+
+#genometraxMoreExamplesFifthLineThirdText
+{
+  width: 20%;
+  float: left
+}
+
+#keggExplanationPopupArea
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+}
+
+#keggExplanationPopupBackground
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #6D6D6D;
+  opacity: 0.9;
+}
+
+#keggResultImageWrapper
+{
+  position: absolute;
+  width: 83.43vmin;
+  height: 9vmin;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 2.5%;
+  z-index: -5;
+}
+
+#keggMoreExamplesPopUpWrapper
+{
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+}
+
+
+#keggMoreExamplesPopUp
+{
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  background: #6D6D6D;
+  opacity: 0.5;
+}
+
+#keggMoreExamplesPopUpCloseButton
+{
+  position: absolute;
+  height: 2vmin;
+  width: 2vmin;
+  top: -2vmin;
+  right: -2vmin;
+  opacity: 1;
+  z-index: 100;
+}
+
+#keggMoreExamplesPopUpBox
+{
+  position: absolute;
+  height: 12vmin;
+  width: 55vmin;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  border-radius: 2vmin;
+  opacity: 1;
+  z-index: 100;
+}
+
+#keggMoreExamplesfirstLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 2vmin;
+  width: 70vmin;
+  top: 2vmin;
+  left: 5vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#keggMoreExamplesFirstLineZeroText
+{
+  width: 17%;
+  float: left
+}
+
+#keggMoreExamplesFirstLineFirstText
+{
+  width: 22%;
+  float: left
+}
+
+#keggMoreExamplesFirstLineSecondText
+{
+  width: 9%;
+  float: left
+}
+
+#keggMoreExamplesFirstLineThirdText
+{
+  width: 20%;
+  float: left
+}
+
+#keggMoreExamplesFirstLineFourthText
+{
+  width: 9%;
+  float: left
+}
+
+#keggMoreExamplesFirstLineFifthText
+{
+  width: 20%;
+  float: left
+}
+
+#keggMoreExamplesSecondLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 1vmin;
+  width: 70vmin;
+  top: 5vmin;
+  left: 21.5vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#keggMoreExamplesSecondLineFirstText
+{
+  width: 60%;
+  float: left
+}
+
+
+#keggMoreExamplesThirdLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 1vmin;
+  width: 70vmin;
+  top: 6.6vmin;
+  left: 21.3vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#keggMoreExamplesThirdLineFirstText
+{
+  width: 32%;
+  float: left
+}
+
+#keggMoreExamplesThirdLineSecondText
+{
+  width: 30%;
+  float: left
+}
+
+#keggMoreExamplesFourthLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 1vmin;
+  width: 70vmin;
+  top: 8.2vmin;
+  left: 21.3vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#keggMoreExamplesFourthLineFirstText
+{
+  width: 30%;
+  float: left
+}
+
+#keggMoreExamplesFourthLineSecondText
+{
+  width: 30%;
+  float: left
+}
+
+#keggMoreExamplesFifthLineTextWrapper
+{
+  position: absolute;
+  display: inline-block;
+  height: 1vmin;
+  width: 70vmin;
+  top: 9.8vmin;
+  left: 15.2vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  font-size: 1.3vmin;
+  line-height: 2vh;
+  z-index: 100;
+}
+
+#keggMoreExamplesFifthLineFirstText
+{
+  width: 41%;
+  float: left
+}
+
+#keggMoreExamplesFifthLineSecondText
+{
+  width: 23.8%;
+  float: left
+}
+
+#keggMoreExamplesFifthLineThirdText
+{
+  width: 20%;
+  float: left
+}
+
+#centerPopUpAreaBackground
+{
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  background: #6D6D6D;
+  opacity: 0.5;
+}
+
+#centerPopUpBox
+{
+  position: absolute;
+  display:table;
+  height: 20vmin;
+  width: 50vmin;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  border-radius: 2vmin;
+  opacity: 1;
+  z-index: 100;
+}
+
+#centerPopUpTextWrapper
+{
+  position: absolute;
+  height: 72%;
+  width: 100%;
+  top: 0%;
+  color:  #118CCF;
+  font-size: 1.5vmin;
+  font-family: "나눔고딕";
+  border-bottom: 0.2vmin solid #118CCF;
+}
+
+#centerPopUpText
+{
+  position: absolute;
+  height: 60%;
+  width: 92%;
+  top: 20%;
+  left: 5%;
+  font-size: 1.5vmin;
+  font-family: "나눔고딕";
+  text-overflow: ellipsis;
+  color: #118CCF;
+  overflow-y: auto;
+}
+
+#centerPopUpText::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #ffffff;
+}
+
+#centerPopUpText::-webkit-scrollbar
+{
+  width: 1em;
+  background-color: #ffffff;
+}
+
+#centerPopUpText::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #118CCF;
+}
+
+#centerPopUpCloseButton
+{
+  position: absolute;
+  height: 3vmin;
+  width: 10vmin;
+  left: 0;
+  right: 0;
+  bottom: 1vmin;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "나눔고딕";
+  font-size: 1.5vmin;
+  border-radius: 1vmin;
+  text-align: center;
+  line-height: 3vmin;
+  color: #118CCF;
+  border: 0.2vmin solid #118CCF;
+}
+
+#footerArea
+{
+  position: absolute;
+  bottom: 1.5%;
+  width: 100%;
+  height: 1.5vmin;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: "나눔고딕";
+  color: #118CCF;
+  font-size: 1vmin;
+}
+
+#tcgaArea
+{
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  height: 50%;
+  width: 50%;
+  border-radius: 2em 2em 2em 2em;
+  background-color: #118CCF;
+}
+
+#tumorSelectWrapper
+{
+  top: 2.5%;
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#selectTumorText
+{
+  position: relative;
+  text-align: center;
+  font-family: "나눔고딕Bold";
+  color: #ffffff;
+  font-size: 1.8vmin;
+  height: 3.5vmin;
+}
+
+#selectTumorList
+{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+  font-size: 1.4vmin;
+  font-family: "THE도담R";
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#tcgaSearchAreaWrapper
+{
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  left: 50%;
+  border-left: 0.25em solid white;
+}
+
+#tcgaSearchText
+{
+  position: absolute;
+  top: 35%;
+  height: 10%;
+  width: 100%;
+  color: #ffffff;
+  font-family: "나눔고딕Bold";
+  text-align: center;
+  font-size: 1.8vmin;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#tcgasearchBoxWrapper
+{
+  position: relative;
+  top: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 10%;
+  width: 80%;
+  background-color: #ffffff;
+  border-radius: 2.5vh;
+}
+
+#tcgaInputArea
+{
+  top: 10%;
+  height: 50%;
+  width: 10%;
+}
+
+#tcgaTextInput {
+
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+  height: 90%;
+  top: 10%;
+  left: 25%;
+  background-color: #ffffff;
+  box-shadow: none;
+  outline: none;
+  border: 0;
+  font-size: 2.5vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  resize: none;
+}
+
+#tcgaTextInput:focus {
+
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+  height: 90%;
+  top: 10%;
+  left: 25%;
+  background-color: #ffffff;
+  box-shadow: none;
+  outline: none;
+  border: 0;
+  font-size: 2.5vmin;
+  color: #118CCF;
+  font-family: "THE도담R";
+  resize: none;
+}
+
+
+#tcgaTextInput::-webkit-input-placeholder {
+  color: #118CCF;
+}
+
+#tcgaTextInput::-moz-placeholder {
+  color: #118CCF;
+}
+
+#tcgaTextInput:-ms-input-placeholder {
+  color: #118CCF;
+}
+
+#tcgaTextInput:-moz-placeholder {
+  color: #118CCF;
+}
+
+#tcgaSubmitButtonImage
+{
+  position: absolute;
+  height: 2.5vmin;
+  width: 2.5vmin;
+  right: 3%;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+}
+
+#tcgaSubmitButtonImage:active
+{
+  height: 2vmin;
+  width: 2vmin;
+}
+
+#tcgaResultArea
+{
+  position: absolute;
+  width: 100%;
+  height: 82.5%;
+  top: 12.5%;
+}

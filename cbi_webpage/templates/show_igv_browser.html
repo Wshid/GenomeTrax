@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+    <head>
+        <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="//igv.org/web/release/1.0.0-rc1/igv-1.0.0-rc1.css">
+        <link href="{% static 'css/igv.css' %}" rel="stylesheet"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="{% static 'js/library/igv-1.0.0-rc1.js'%}" type="text/javascript"></script>
+        <script src="{% static 'js/library/ag-grid.min.js' %}" type="text/javascript"></script>
+        <meta charset="utf-8">
+            <link href="{% static 'css/element.css' %}" rel="stylesheet"/>
+            <link href="{% static 'css/id.css' %}" rel="stylesheet"/>
+        </meta>
+    </head>
+    <body>
+    <div id="igv_browser">
+    </div>
+    </body>
+        <script type="text/javascript">
+            div = document.getElementById("igv_browser");
+
+            options = {
+            locus: "{{key}}",
+            reference: {
+                id: "hg19",
+                fastaURL: "//dn7ywbm9isq8j.cloudfront.net/genomes/seq/hg19/hg19.fasta",
+                cytobandURL: "//dn7ywbm9isq8j.cloudfront.net/genomes/seq/hg19/cytoBand.txt"
+            },
+
+            trackDefaults: {
+                palette: ["#00A0B0", "#6A4A3C", "#CC333F", "#EB6841"],
+                bam: {
+                    coverageThreshold: 0.2,
+                    coverageQualityWeight: true,
+                }
+            },
+
+            
+            tracks: [
+        {% for key, value in igv_input_file_sub_dictionary.items %}
+                {
+                    name: "{{key}}",
+                    url: "{{value.0}}",
+                    indexURL: "{{value.1}}",
+                    maxHeight: "700",
+                    type: "bam",
+                    alignmentRowHeight: "15"
+                },
+        {% endfor %}
+            ],
+            };
+
+            testbrowser1 = igv.createBrowser(div, options);
+        </script>
+</html>

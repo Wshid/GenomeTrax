@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{# Load the tag library #}
+	{% load bootstrap3 %}
+
+	{# Load CSS and JavaScript #}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+
+	{# Display django.contrib.messages as Bootstrap alerts #}
+	{% bootstrap_messages %}
+	<meta charset="UTF-8">
+	<title>write</title>
+	
+	{% load staticfiles %}
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+	<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/element.css' %}">
+	<link rel="stylesheet" href="{% static 'css/class.css' %}">
+	<link rel="stylesheet" href="{% static 'css/id.css' %}">
+
+</head>
+<body>
+	<form class="articleMargin" action="" method="post" enctype="multipart/form-data">
+		<div class="articleWrapper">
+			<div class="articleText">
+				제목 : 
+			</div>
+			<div class="articleForm"> 
+				{{ form.title }} 
+			</div>
+		</div>
+		<div class="articleWrapper">
+			<div class="articleText">
+				썸네일 : 
+			</div>
+			<div class="articleForm"> 
+				{{ form.thumbnail }} 
+			</div>
+		</div>
+		<div class="articleWrapper">
+			<div class="articleText">
+				내용 : 
+			</div>
+			<div class="articleForm"> 
+				{{ form.contents }} 
+			</div>
+		</div>
+		<div class="saveButton">
+			<button type="submit" class="btn btn-primary">
+				저장
+			</button>
+		</div>
+		{% csrf_token %}
+	</form>
+</form>
+</body>
+</html> 

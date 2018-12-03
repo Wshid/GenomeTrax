@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+    <head>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+        <script src="{% static 'js/library/angular.min.js'%}" type="text/javascript"></script>
+        <script src="{% static 'js/library/angular-animate.min.js'%}" type="text/javascript"></script>
+        <script src="{% static 'js/library/angular-cookies.min.js'%}" type="text/javascript"></script>
+        <script src="{% static 'js/library/CSSPlugin.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/library/TweenLite.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/library/ag-grid.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/app.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/services.js' %}" type="text/javascript"></script>
+        {# Load the tag library #}
+		{% load bootstrap3 %}
+		{# Load CSS and JavaScript #}
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+		{# Display django.contrib.messages as Bootstrap alerts #}
+		{% bootstrap_messages %}
+        <meta charset="utf-8">
+            <title>
+                IGV Browser
+            </title>
+            <link href="{% static 'css/element.css' %}" rel="stylesheet">
+                <link href="{% static 'css/class.css' %}" rel="stylesheet">
+                    <link href="{% static 'css/id.css' %}" rel="stylesheet">
+                    </link>
+                </link>
+            </link>
+        </meta>
+    </head>
+    <body ng-controller="GlobalController as GlobalController">
+        <div id="spinnerArea" ng-if="GlobalController.getLoadingPopUpFlag()==true && GlobalController.getInputFileListLength()==true">
+            <div id="spinnerBackgroundArea">
+            </div>
+            <div class="spinner">
+                <div class="bounce1">
+                </div>
+                <div class="bounce2">
+                </div>
+                <div class="bounce3">
+                </div>
+            </div>
+        </div>
+        <div id="popUpWrapperArea">
+            <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+                <div id="popUpTextWrapper">
+                    {% verbatim %} {{popUpText}} {% endverbatim %}
+                </div>
+                <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                    <img src="{% static 'image/close-button.png' %}" />
+                </div>
+            </div>
+        </div>
+        <div id="igvTitleArea">
+            <a href="/show_igv/" id="linkArea">
+                <div id="mainTitle">
+                    IGV Browser
+                </div>
+            </a>
+            <div id="separateTitleLine">
+            </div>
+        </div>
+        <div id="activeInputArea" ng-controller="ServiceController as ServiceController">
+            <form id="igvInputArea" enctype="multipart/form-data" action="" method="post">
+                <div class="inputTextFileWrapper">
+                    <label class="inputTextFile">
+                        <input type="file" name="myfiles" onchange="angular.element(this).scope().setMultipleFilesPlaceHolderValue(this)" multiple>
+                    </label>
+                    <input class="uploadTextFile" {% verbatim %}placeholder="{{multipleFilesPlaceHolderValue}}" {%  endverbatim %} disabled="disabled" />
+                    <div id="inputTextFileLine"></div>
+                </div>
+                <button id="igvSubmitButton" type="submit" ng-click="GlobalController.setLoadingPopupFlag(true)">
+                    Submit
+                </button>
+            {% csrf_token %}
+            </form>
+        </div>
+    </body>
+</html>

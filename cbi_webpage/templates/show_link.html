@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<div id="activeContentArea">
+		<div class="row linkHeight">
+			{% for current_page_link in current_page reversed %}
+			{% if forloop.counter == 1 or forloop.counter == 2 or forloop.counter == 3 or forloop.counter == 4 %}
+			<div class="col-xs-3 col-md-3 linkNopadding">
+				<a class="linkArea" href="{{ current_page_link.url }}" target="_blank">
+					<div class="linkWrapper">
+						<div class="linkPicture">
+							<img class="linkImage" src="/media/{{current_page_link.thumbnail}}"/>
+						</div>
+						<div class="linkName">
+						</div>
+						<div class="linkNameText">
+							{{ current_page_link.title }}
+						</div>
+					</div>
+				</a>
+			</div>
+			{% endif %}
+			{% endfor %}
+		</div>
+		<div class="row linkHeight">
+			{% for current_page_link in current_page reversed %}
+			{% if forloop.counter == 5 or forloop.counter == 6 or forloop.counter == 7 or forloop.counter == 8 %}
+			<div class="col-xs-3 col-md-3 linkNopadding">
+				<a class="linkArea" href="{{ current_page_link.url }}" target="_blank">
+					<div class="linkWrapper">
+						<div class="linkPicture">
+							<img class="linkImage" src="/media/{{current_page_link.thumbnail}}"/>
+						</div>
+						<div class="linkName">
+						</div>
+						<div class="linkNameText">
+							{{ current_page_link.title }}
+						</div>
+
+					</div>
+				</a>
+			</div>
+			{% endif %}
+			{% endfor %}
+		</div>
+		<div id="paginationLinkWrapper">
+			<ul class = "pagination">
+				{%if current_page_number != 1 %}
+				<li><a href = "/show_link/{{ current_page_number|add:"-1" }}/">&laquo;</a></li>
+				{% elif current_page_number == 1 %}
+				<li><a href = "#">&laquo;</a></li>
+				{% endif %}
+				{% for page_number in total_page_range %}
+				{% if current_page_number == page_number %}
+				<li class = "active"><a href = "/show_link/{{ page_number }}/">{{ page_number }}</a></li>
+				{% elif current_page_number != page_number %}
+				<li><a href = "/show_link/{{ page_number }}/">{{ page_number }}</a></li>
+				{% endif %}
+				{% endfor %}
+				{%if current_page_number < total_page_number %}
+				<li><a href = "/show_link/{{ current_page_number|add:"1" }}/">&raquo;</a></li>
+				{% elif current_page_number = total_page_number %}
+				<li><a href = "#">&raquo;</a></li>
+				{% endif %}
+			</ul>	
+		</div>
+	</div>
+{% endblock %}

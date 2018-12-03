@@ -1,0 +1,165 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+    <head>
+        <base href="/">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular-animate.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular-cookies.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/CSSPlugin.min.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/TweenLite.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/ag-grid.min.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/app.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/services.js' %}" type="text/javascript">
+        </script>
+        {# Load the tag library #}
+        {% load bootstrap3 %}
+        {# Load CSS and JavaScript #}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        {# Display django.contrib.messages as Bootstrap alerts #}
+        {% bootstrap_messages %}
+        <meta charset="utf-8">
+            <title>
+                Kegg Results
+            </title>
+            <link href="{% static 'css/element.css' %}" rel="stylesheet">
+                <link href="{% static 'css/class.css' %}" rel="stylesheet">
+                    <link href="{% static 'css/id.css' %}" rel="stylesheet">
+                    </link>
+                </link>
+            </link>
+        </meta>
+    </head>
+    <body ng-controller="GlobalController as GlobalController">
+{% if result_error_list.0 == 203 %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-if="GlobalController.getGenePopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% for gene_name in result_error_list.1 %}
+                    {% if not forloop.last %}
+                        "{{ gene_name }}",
+                    {% elif forloop.last %}
+                        "{{ gene_name }}"
+                    {% endif %}
+                {% endfor %}에 해당하는 Gene 정보가 Kegg Database에 존재하지 않습니다.
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setGenePopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+        <div class="popUpArea" ng-if="GlobalController.getPathwayPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% for pathway_name in result_error_list.2 %}
+                    {% if not forloop.last %}
+                        "{{ pathway_name }}",
+                    {% elif forloop.last %}
+                        "{{ pathway_name }}"
+                    {% endif %}
+                {% endfor %}
+                를 포함하는 Pathway 정보가 Kegg Database에 존재하지 않습니다.
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setPathwayPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+{% elif result_error_list.0 == 204 %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-if="GlobalController.getGenePopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% for gene_name in result_error_list.1 %}
+                    {% if not forloop.last %}
+                        "{{ gene_name }}",
+                    {% elif forloop.last %}
+                        "{{ gene_name }}"
+                    {% endif %}
+                {% endfor %}에 해당하는 Gene 정보가 Kegg Database에 존재하지 않습니다.
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setGenePopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+{% elif result_error_list.0 == 206 %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-if="GlobalController.getPathwayPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% for pathway_name in result_error_list.2 %}
+                    {% if not forloop.last %}
+                        "{{ pathway_name }}",
+                    {% elif forloop.last %}
+                        "{{ pathway_name }}"
+                    {% endif %}
+                {% endfor %}
+                를 포함하는 Pathway 정보가 Kegg Database에 존재하지 않습니다.
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setPathwayPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{optimizationPopUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('DownloadSetting')" ng-if="GlobalController.getDownloadSettingPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{downloadSettingPopUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setDownloadSettingPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+{% endif %}
+    <div class="resultImageWrapper">
+        <img src="{% static 'image/kegg_result.png' %}"/>
+    </div>
+    <div id="keggArea" ng-controller="KeggResultController as KeggResultController">
+        <button id="selectAllButton" ng-click="KeggResultController.setSelecteAllFlag()" type="button">Select All</button>
+        <button id="downloadButton" ng-click="KeggResultController.download()" type="button">Download</button>
+        <div class="keggResultArea scrollableArea">
+            <form id="downloadForm" action=".">
+                {% for gene_number, pathway_name, link_url, image_url in result_kegg_list %}
+                <div class="geneInfoWrapper">
+                    <div class="checkBoxWrapper">
+                    <a ng-init="KeggResultController.initDownloadListAll({{forloop.counter}},'{{image_url}}')" ng-click="KeggResultController.clickCheckBox({{forloop.counter}}, '{{image_url}}')"  href="" class="downloadCheckBoxImage">
+                            <img src="{% static 'image/empty-checkbox.png' %}"/>
+                        </a>
+                        <a ng-if="KeggResultController.isChecked({{forloop.counter}})" href="" class="downloadCheckImage">
+                            <img src="{% static 'image/check-mark.png' %}"/>
+                        </a>
+                    </div>
+                    <div class="geneInfo">
+                        <a class="geneInfoText" href="{{link_url}}" target="_blank">
+                            {{pathway_name}} [ {{gene_number}} ]
+                        </a>
+                    </div>
+                </div>
+                <a href="{{link_url}}" target="_blank">
+                    <div class="pathwayImage">
+                        <img src="{{image_url}}">
+                    </div>
+                </a>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+    </body>
+</html>

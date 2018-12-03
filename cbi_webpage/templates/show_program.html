@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+        <div id="activeArticleTitle">
+            {{ manual_guide_list.title }}
+        </div>
+        <div id="activeContentLine">
+        </div>
+        <div class="scrollableArea" id="activeContentArea">
+            {{ manual_guide_list.contents | safe}}
+        </div>
+{% endblock %}

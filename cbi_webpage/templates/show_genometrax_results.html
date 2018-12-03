@@ -1,0 +1,115 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+    <head>
+        <base href="/">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular-animate.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular-cookies.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/CSSPlugin.min.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/TweenLite.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/ag-grid.min.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/app.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/services.js' %}" type="text/javascript">
+        </script>
+        {# Load the tag library #}
+        {% load bootstrap3 %}
+        {# Load CSS and JavaScript #}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        {# Display django.contrib.messages as Bootstrap alerts #}
+        {% bootstrap_messages %}
+        <meta charset="utf-8">
+            <title>
+                Genometrax Results
+            </title>
+            <link href="{% static 'css/element.css' %}" rel="stylesheet">
+                <link href="{% static 'css/class.css' %}" rel="stylesheet">
+                    <link href="{% static 'css/id.css' %}" rel="stylesheet">
+                    </link>
+                </link>
+            </link>
+        </meta>
+    </head><!-- initailizeBody 여튼 창 크기와 폰트 사이즈 변경, app.js에 위치 -->
+    <!-- 중간에 있는 as Controller를 제거하면 아무런 정보도 표기되지 않음 -->
+    <body ng-controller="GlobalController as GController" ng-init="GlobalController.initailizeBody">
+    <!--<body ng-controller="GController as GController" ng-init="GController.initailizeBody()">-->
+        <div id="genometraxResultImageWrapper">
+            <img src="{% static 'image/genometrax_result.png' %}"/>
+        </div>
+ {% if genometrax_feature_result_json_data and genometrax_ontology_result_json_data and current_database %}
+    <div id="genomTraxArea" ng-init="GController.initialiizeAgGrid({{current_database}}, {{genometrax_feature_result_json_data}}, {{genometrax_ontology_result_json_data}}, {{filterOn}})">
+        <div id="currentDatabaseWrapper" ng-init="GController.setCurrentDatabase({{genometrax_ontology_result_json_data}}, {{current_database}})" ng-click="GController.toggleDatabaseList()">
+                <a id="currentDatabase" href="">
+                    {% verbatim %}
+                        {{ currentDatabaseName }}
+                    {% endverbatim %}
+                </a>
+                <img id="selectDatabaseArrow" src="{% static 'image/down-arrow.png' %}"/>
+        </div>
+        <div id="databaseListWrapper" ng-if="GController.getDatabaseListFlag()">
+                <div id="databaseList">
+                    {% for database_list_number in database_list%}
+                    <a href="/show_genometrax_results/{{database_list_number.0}}/{{random_id}}/1/{{filterOn}}">
+                        <div class="databaseListElement">
+                        {{ database_list_number.1 }}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+        </div>
+        <div id="genomeTraxSwitchButtonWrapper"><!-- 여기 부분을 분기시키도록 한다. -->
+            <a ng-click="GController.setDownloadStatus('all')" id="genomeTraxAllText" href="">
+                All
+            </a>
+            <a ng-click="GController.toggleDownloadStatus()" href="">
+                <img ng-if="GController.isDownloadStatusAll()==true" id="genomeTraxSwitchButton" src="{% static 'image/switch_left.png' %}">
+                <img ng-if="GController.isDownloadStatusCurrent()==true" id="genomeTraxSwitchButton" src="{% static 'image/switch_right.png' %}">
+            </a>
+            <a ng-click="GController.setDownloadStatus('current')" id="genomeTraxCurrentText" href="">
+                Current
+            </a>
+        </div>
+        <!-- 모든 버튼에 대하여 filterOn URL 추가 -->
+        <div id="genomeTraxDownloadButtonWrapper"><!-- 이 부분에서 처리하던 부분을 js처리로 변경 하도록 한다 -->
+            <!-- <a id="genomeTraxDownloadButton" href="/export_xlsx/{% verbatim %}{{downloadStatus}}{% endverbatim %}/{{current_database}}/{{random_id}}">Download</a> -->
+            <a ng-if="GController.isDownloadStatusCurrent()==true" class="genomeTraxDownloadButton" ng-click="GController.export_xlsx_js()">Download</a>
+            <a ng-if="GController.isDownloadStatusAll()==true" class="genomeTraxDownloadButton" href="/export_xlsx/{% verbatim %}{{downloadStatus}}{% endverbatim %}/{{current_database}}/{{random_id}}">Download</a>
+            <!-- <a id="genomeTraxDownloadButton" ng-click="GController.export_xlsx_js({% verbatim %}{{downloadStatus}}{% endverbatim %}, {{current_database}});">Download</a>-->
+
+            <!--<input type="button" id="genomeTraxDownloadButton" onclick="export_xlsx_js({% verbatim %}{{downloadStatus}}{% endverbatim %}, {{current_database}});" value="Download" />-->
+        </div>
+        <div id="agGridTable" ag-grid="gridOptions" class="ag-blue"></div>
+        <!--<script>console.log({{filterOn}});</script>-->
+        {% if filterOn == "nonFilter" %}
+          <a id="genomeTraxFirstButton" href="/show_genometrax_results/{{current_database}}/{{random_id}}/1/{{filterOn}}/">First</a>
+          {% if page_number != 1 %}
+          <a id="genomeTraxPreviousButton" href="/show_genometrax_results/{{current_database}}/{{random_id}}/{{page_number|add:"-1"}}/{{filterOn}}/">Previous</a>
+          {% elif page_number == 1 %}
+          <a id="genomeTraxPreviousButton" href="/show_genometrax_results/{{current_database}}/{{random_id}}/{{page_number}}/{{filterOn}}/">Previous</a>
+          {% endif %}
+          <div id="genomeTraxIndex">Page {{page_number}} of {{total_page_number}}</div>
+          {% if page_number != total_page_number %}
+          <a id="genomeTraxNextButton" href="/show_genometrax_results/{{current_database}}/{{random_id}}/{{page_number|add:"1"}}/{{filterOn}}/">Next</a>
+          {% elif page_number == total_page_number %}
+          <a id="genomeTraxNextButton" href="/show_genometrax_results/{{current_database}}/{{random_id}}/{{page_number}}/{{filterOn}}/">Next</a>
+          {% endif %}
+          <a id="genomeTraxLastButton" href="/show_genometrax_results/{{current_database}}/{{random_id}}/{{total_page_number}}/{{filterOn}}/">Last</a>
+        {% endif %}
+    </div>
+{% else %}
+    <div id="normalContentArea">
+        No Results
+    </div>
+{% endif %}
+    </body>
+</html>

@@ -1,0 +1,360 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div id="activeInputArea" ng-controller="ServiceController as ServiceController"> <!-- app.js 하단부에 위치함 -->
+        <div id="genomeTraxArea">
+            <div id="selectOptionArea">
+                <div id="selectUpperOptionArea">
+                    <div id="selectReferenceText">
+                        Select Reference Genome
+                    </div>
+                    <a id="manual_button" class="selectDatabaseAllButton" href="{%static 'files/GenomeTrax_Manual.pdf' %}" target="_blank">  
+                        MANUAL
+                    </a>
+                    <div id="referenceGenomeWrapper">
+                        <a id="hg18Text" ng-click="GlobalController.setHgVersion('hg18')" href="">
+                            hg18/NCBI36
+                            <a ng-click="GlobalController.setHgVersion('hg18')" id="hg18RadioButtonImage" href="">
+                                    <img ng-if="GlobalController.isHgVesion18()==false" src="{% static 'image/circle-outline.png' %}"/>
+                                    <img ng-if="GlobalController.isHgVesion18()==true" src="{% static 'image/radio-on-button.png' %}"/>
+                            </a>
+                        </a>
+                        <a id="hg19Text" ng-click="GlobalController.setHgVersion('hg19')" href="">
+                            hg19/GRCh37
+                            <a ng-click="GlobalController.setHgVersion('hg19')" id="hg19RadioButtonImage" href="">
+                            <img ng-if="GlobalController.isHgVesion19()==false" src="{% static 'image/circle-outline.png' %}"/>
+                            <img ng-if="GlobalController.isHgVesion19()==true" src="{% static 'image/radio-on-button.png' %}"/>
+                            </a>
+                        </a>
+                        <a id="hg38Text" ng-click="GlobalController.setHgVersion('hg38')" href="">
+                            hg38/GRCh38
+                            <a ng-click="GlobalController.setHgVersion('hg38')" id="hg38RadioButtonImage" href="">
+                                <img ng-if="GlobalController.isHgVesion38()==false" src="{% static 'image/circle-outline.png' %}"/>
+                                <img ng-if="GlobalController.isHgVesion38()==true" src="{% static 'image/radio-on-button.png' %}"/>
+                            </a>
+                        </a>
+                    </div>
+                </div>
+                <div id="selectLowerOptionArea">
+                    <div id="selectDatabaseText">
+                        Select Databases
+                    </div>
+                    <a ng-click="ServiceController.selectDeselectAll()" href="">
+                        <div class="selectDatabaseAllButton"> <!-- id에서 class로 승격 -->
+                            Select/Deselect All
+                        </div>
+                    </a>
+                    <div id="dataBaseWrapper">
+                        <div id="mutationsAndVariantsText">Mutations and Variants</div>
+                        <div id="mutationsAndVariantsWrapper">
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(1,6)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(1)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(1,6)" class="genomeTraxText">HGMD inherited disease mutations</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(2,29)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(2)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(2,29)" class="genomeTraxText">HGMD imputed inherited disease mutations</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(3,34)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(3)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(3,34)" class="genomeTraxText">PharmacoGenomic Mutation Database</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(4,32)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(4)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(4,32)" class="genomeTraxText">ClinVar Variants</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(5,17)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(5)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(5,17)" class="genomeTraxText">GWAS Catalogue</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(6,25)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(6)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(6,25)" class="genomeTraxText">EVS Exome Variations</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(7,26)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(7)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(7,26)" class="genomeTraxText">dbNSFP Nonsynonymous functional predictions</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(8,33)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(8)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(8,33)" class="genomeTraxText">dbSNP</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(9,59)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(9)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(9,59)" class="genomeTraxText">TCGA</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(10,45)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(10)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(10,45)" class="genomeTraxText">Complete Genomics</div>
+                            </div>
+                        </div>
+                        <div id="regulatoryFeaturesText">Regulatory Features</div>
+                        <div id="regulatoryFeaturesWrapper">
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(11,2)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(11)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(11,2)" class="genomeTraxText">TRANSFAC experimentally verified TFBS</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(12,1)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(12)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(12,1)" class="genomeTraxText">Predicted ChIP-Seq TFBS</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(13,30)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(13)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(13,30)" class="genomeTraxText">Predicted TFBSs in DNAse hyper sensitivity regions</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(14,3)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(14)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(14,3)" class="genomeTraxText">CpG Islands</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(15,4)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(15)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(15,4)" class="genomeTraxText">Virtual Transcription Start Sites (TSSs)</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(16,5)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(16)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(16,5)" class="genomeTraxText">Microsatellites</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(17,12)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(17)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(17,12)" class="genomeTraxText">Post translational modifications</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(18,19)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(18)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(18,19)" class="genomeTraxText">miRNA</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(19,15)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(19)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(19,15)" class="genomeTraxText">dbscSNV Variations in splice sites</div>
+                            </div>
+                        </div>
+                        <div id="geneFunctionalAssignmentsText">Gene Functional Assignments</div>
+                        <div id="geneFunctionalAssignmentsWrapper">
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(20,9)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(20)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(20,9)" class="genomeTraxText">Disease associations</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(21,11)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(21)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(21,11)" class="genomeTraxText">Drug Targets</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(22,10)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(22)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(22,10)" class="genomeTraxText">Pathway Membership</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(23,18)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(23)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(23,18)" class="genomeTraxText">HGMD disease genes</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(24,42)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(24)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(24,42)" class="genomeTraxText">Orphanet</div>
+                            </div>
+                            <div class="genomeTraxCheckBoxWrapper">
+                                <a ng-click="ServiceController.clickCheckBox(25,35)" href="" class="genomeTraxCheckBoxImage">
+                                    <img src="{% static 'image/empty-checkbox.png' %}"/>
+                                </a>
+                                <a ng-if="ServiceController.isChecked(25)==true" href="" class="genomeTraxCheckImage">
+                                    <img src="{% static 'image/check-mark.png' %}"/>
+                                </a>
+                                <div ng-click="ServiceController.clickCheckBox(25,35)" class="genomeTraxText">OMIM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="searchArea">
+                <div id="coordinatesSearchWrapper">
+                    <div id="coordinatesSearchText">
+                        Search data on coordinates with conditions
+                    </div>
+                    <div id="coordinatesSearchExampleText">
+                        (e.g. chr17:7154000-7764532 A>C TP53)
+                    </div>
+                    <div ng-click="GlobalController.setGenomtraxMoreExamplesPopUpFlag(true)" id="coordinatesSearchMoreExampleButton">
+                            More Examples
+                    </div>
+                    <div class="inputOptionArea" ng-init="ServiceController.setInputTabText('List Text')" ng-class="{inactiveInputOptionArea:ServiceController.getInputTabFlag()==false}">
+                    </div> <!-- coordinatesSearchInputTextArea는 css의 클래스이며, value로 들어오는 것이 조건이다. angular이기때문에 app.js에서 확인 가능 -->
+                    <!--<form action="/show_genometrax/coordinates" ng-class="{coordinatesSearchInputTextArea:ServiceController.getCurrentInputStatus()==textInputStatus, coordinatesSearchInputTextFileArea:ServiceController.getCurrentInputStatus()==textFileInputStatus}" ng-if="ServiceController.getCurrentInputStatus()!=initStatus" enctype="multipart/form-data" method="post" target="_blank"> -->
+                    <form name="form_coordinates" ng-class="{coordinatesSearchInputTextArea:ServiceController.getCurrentInputStatus()==textInputStatus, coordinatesSearchInputTextFileArea:ServiceController.getCurrentInputStatus()==textFileInputStatus}" ng-if="ServiceController.getCurrentInputStatus()!=initStatus">
+                        <input type="hidden" maxlength="200" name="search_option" ng-value="GlobalController.getSearchOption()" type="text" />
+                        <input type="hidden" maxlength="200" name="hg_version_text" ng-value="GlobalController.getHgVersion()" type="text" />
+                        <input type="hidden" maxlength="200" name="checked_database_list" ng-value="ServiceController.getCheckedDatabaseListJSON()" type="text" />
+                        <div id="coordinatesSearchTextAreaHeight">
+                            <div id="coordinatesSearchTextInputWrapper">
+                                <textarea cols="40" rows="10" id="coordinatesSearchTextInput" name="input_coordinates_text"  {% verbatim %}placeholder="{{coordinatesTextPlaceHolderValue}}" ng-focus="ServiceController.clearCoordinatesPlaceHolderValue()" ng-blur="ServiceController.fillCoordinatesPlaceHolderValue()" {% endverbatim %}></textarea>
+                            </div> <!-- verbatim : https://docs.djangoproject.com/en/1.11/ref/templates/builtins/ 렌더링 회피라고 생각하면 될 듯 -->
+                            <div ng-if="ServiceController.getCurrentInputStatus()==textFileInputStatus" class="inputTextFileWrapper">
+                                <label class="inputTextFile">
+                                    <input type="file" name="input_text_file" onchange="angular.element(this).scope().setTextFilePlaceHolderValue(this)">
+                                </label>
+                            <input class="uploadTextFile" {% verbatim %}placeholder="{{textFilePlaceHolderValue}}" {% endverbatim %} disabled="disabled" />
+                          </div><!--
+                            <button ng-click="GlobalController.SearchFilterOption('coordinates', 'nonFilter')" class="coordinatesGenesSubmitButton" type="submit">
+                                Submit  던져 주는 것이 중요한데 저 FORM URL이 문제네
+                            </button>--> <!-- 기존 submit 버튼 제거, 17.07.25 -->
+                            <button ng-click="GlobalController.SearchFilterOption('coordinates', 'filter')" class="coordinatesGenesSubmitButton" type="submit">
+                                Submit
+                            </button>
+                        </div>
+                    {% csrf_token %}
+                    </form>
+                </div>
+                <div id="genesSearchWrapper">
+                    <div id="genesSearchText">
+                        Search data on HGNC gene symbols
+                    </div>
+                    <div id="genesSearchExampleText">
+                        (e.g. BRCA1)
+                    </div>
+                    <div class="inputOptionArea" ng-init="ServiceController.setInputTabText('List Text')" ng-class="{inactiveInputOptionArea:ServiceController.getInputTabFlag()==false}">
+                    </div>
+                    <!--<form action="/show_genometrax/genes" ng-class="{genesSearchInputTextArea:ServiceController.getCurrentInputStatus()==textInputStatus, genesSearchInputTextFileArea:ServiceController.getCurrentInputStatus()==textFileInputStatus}" ng-if="ServiceController.getCurrentInputStatus()!=initStatus" enctype="multipart/form-data" method="post" target="_blank">-->
+                    <form name="form_genes" ng-class="{genesSearchInputTextArea:ServiceController.getCurrentInputStatus()==textInputStatus, genesSearchInputTextFileArea:ServiceController.getCurrentInputStatus()==textFileInputStatus}" ng-if="ServiceController.getCurrentInputStatus()!=initStatus">
+                        <input type="hidden" maxlength="200" name="search_option" ng-value="GlobalController.getSearchOption()" type="text" />
+                        <input type="hidden" maxlength="200" name="hg_version_text" ng-value="GlobalController.getHgVersion()" type="text" />
+                        <input type="hidden" maxlength="200" name="checked_database_list" ng-value="ServiceController.getCheckedDatabaseListJSON()" type="text" />
+                        <div id="genesSearchTextAreaHeight">
+                            <div id="genesSearchTextInputWrapper">
+                                <textarea cols="40" rows="10" id="genesSearchTextInput" name="input_genes_text"{% verbatim %}placeholder="{{genesTextPlaceHolderValue}}" ng-focus="ServiceController.clearGenesPlaceHolderValue()" ng-blur="ServiceController.fillGenesPlaceHolderValue()" ng-enter="submit()" {% endverbatim %}></textarea>
+                            </div><!-- 17.07.25 버튼 제거
+                            <button ng-click="GlobalController.SearchFilterOption('genes', 'nonFilter')" class="coordinatesGenesSubmitButton" type="submit">
+                                Submit
+                            </button>-->
+                            <!-- <button ng-click="GlobalController.setSearchOption('genes', true)" class="genesSubmitButton" type="submit"> -->
+
+                            <button ng-click="GlobalController.SearchFilterOption('genes', 'filter')" class="coordinatesGenesSubmitButton" type="submit">
+                                Submit
+                            </button>
+                        </div>
+                    {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--     <div id="footerArea">
+        Division of Clinical Bioinformatics, Biomedical Research Institute, Seoul National University Hospital
+    </div>
+ -->
+{% endblock %}

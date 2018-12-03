@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% if genometrax_feature_result_json_data and genometrax_ontology_result_json_data and current_database and database_list %}
+        <div id="normalContentArea" ng-init="GlobalController.setColumDefs({{genometrax_feature_result_json_data}}, {{genometrax_ontology_result_json_data}})">
+             <div id="currentDatabaseWrapper" ng-init="GlobalController.setCurrentDatabase({{genometrax_ontology_result_json_data}}, {{current_database}})" ng-click="GlobalController.toggleDatabaseList()">
+                <a id="currentDatabase" href="">
+                    {% verbatim %}
+                        {{ currentDatabaseName }} 
+                    {% endverbatim %}
+                </a>
+                <img id="selectDatabaseArrow" src="{% static 'image/down-arrow.png' %}"/>
+            </div>
+            <div id="databaseListWrapper" ng-if="GlobalController.getDatabaseListFlag()">
+                <div id="databaseList">
+                    {% for database_list_number in database_list%}
+                    <a class="databaseListElement" href="/show/">
+                        {{ database_list_number.1 }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div id="genomeTraxDownloadButtonWrapper">
+                <a id="genomeTraxDownloadButton" href="/export_xls/">Download</a>
+            </div>
+            <div id="agGridTable" ag-grid="gridOptions" class="ag-blue"></div>
+                <a id="genomeTraxFirstButton" href="/show_search_results/1/">First</a>
+                <a id="genomeTraxPreviousButton" href="/show_search_results/{{page_number|add:"-1"}}/">Previous</a>
+                <div id="genomeTraxIndex">Page {{page_number}} of {{total_page_number}}</div>
+                <a id="genomeTraxNextButton" href="/show_search_results/{{page_number|add:"1"}}/">Next</a>
+                <a id="genomeTraxLastButton" href="/show_search_results/{{total_page_number}}/">Last</a>
+        </div>
+    {% elif result_kegg_list %}
+        <div id="normalContentArea">
+        <div class="keggResultArea scrollableArea" ng-controller="KeggResultController as KeggResultController">
+            <form id="downloadForm" action=".">
+                <button id="selectAllButton" ng-click="KeggResultController.setSelecteAllFlag()" type="button">Select All</button>
+                <button id="downloadButton" ng-click="KeggResultController.download()" type="button">Download</button>
+                {% for gene_number, pathway_name, link_url, image_url in result_kegg_list %}
+                <div class="geneInfoWrapper">
+                    <div class="checkBoxWrapper">
+                        <a ng-init="KeggResultController.initDownloadListAll({{forloop.counter}},'{{image_url}}')" ng-click="KeggResultController.clickCheckBox({{forloop.counter}}, '{{image_url}}')"  href="" class="downloadCheckBoxImage">
+                            <img src="{% static 'image/empty-checkbox.png' %}"/>
+                        </a>
+                        <a ng-if="KeggResultController.isChecked({{forloop.counter}})" href="" class="downloadCheckImage">
+                            <img src="{% static 'image/check-mark.png' %}"/>
+                        </a>
+                    </div>
+                    <div class="geneInfo">
+                        <a class="geneInfoText" href="{{link_url}}" target="_blank">
+                            {{pathway_name}} [ {{gene_number}} ]
+                        </a>
+                    </div>
+                </div>
+                <a href="{{link_url}}" target="_blank">
+                    <div class="pathwayImage">
+                        <img src="{{image_url}}">
+                    </div>
+                </a>
+                {% endfor %}
+            </form>
+        </div>
+      </div>
+    {% else %}
+        <div id="normalContentArea">
+            No Results
+        </div>
+    {% endif %}
+{% endblock %}

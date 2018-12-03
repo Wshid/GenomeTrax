@@ -1,0 +1,595 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+    <head>
+
+        <base href="/">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular-animate.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/angular-cookies.min.js'%}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/CSSPlugin.min.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/TweenLite.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/library/ag-grid.min.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/app.js' %}" type="text/javascript">
+        </script>
+        <script src="{% static 'js/services.js' %}" type="text/javascript">
+        </script>
+        {# Load the tag library #}
+		{% load bootstrap3 %}
+		{# Load CSS and JavaScript #}
+		{% bootstrap_css %}
+		{% bootstrap_javascript %}
+		{# Display django.contrib.messages as Bootstrap alerts #}
+		{% bootstrap_messages %}
+        <meta charset="utf-8">
+            <title>
+                임상의과학정보실
+            </title>
+            <link href="{% static 'css/element.css' %}" rel="stylesheet"> </link>
+            <link href="{% static 'css/class.css' %}" rel="stylesheet"> </link>
+            <link href="{% static 'css/id.css' %}" rel="stylesheet"> </link>
+        </meta>
+    </head>
+    <body ng-controller="GlobalController as GlobalController">  <!-- A as B, A를 B로 치환하여 사용하는 명명법 -->
+        <div id="spinnerArea" ng-if="GlobalController.getLoadingPopUpFlag()==true">
+            <div id="spinnerBackgroundArea">
+            </div>
+            <div class="spinner">
+                <div class="bounce1">
+                </div>
+                <div class="bounce2">
+                </div>
+                <div class="bounce3">
+                </div>
+            </div>
+        </div>
+        <div id="keggExplanationPopupArea" ng-if="GlobalController.getKeggExplanationPopUpFlag()==true">
+            <div id="keggExplanationPopupBackground">
+            </div>
+            <div class="keggExplanationImageWrapper">
+                <img class="keggExplanationImage" src="{% static 'image/kegg_input.png' %}"/>
+                <div class="keggExplanationText">
+                    Pathway 찾기를 희망하는  Gene 이름 및 배경색 값을 입력 형식에 맞게 위와 같이 입력합니다.
+                </div>
+            </div>
+            <div class="keggExplanationImageWrapper">
+                <img class="keggExplanationImage" src="{% static 'image/kegg_output.png' %}"/>
+                <div class="keggExplanationText">
+                    새 창에서 위와 같은 결과 값을 확인할 수 있습니다.
+                </div>
+            </div>
+            <div id="keggExplanationButtonWrapper">
+                <a id="keggSampleDownloadButton" href="{% static 'txt/kegg_sample.txt' %}" download="kegg_sample.txt" target="_self">
+                    Sample Download
+                </a>
+                <div id="keggExplanationCloseButton" ng-click="GlobalController.setKeggExplanationPopUpFlag(false)">
+                    Close
+                </div>
+            </div>
+        </div>
+
+        <!-- 에러 코드 리턴
+        <script type='text/javascript'>
+          console.log({result_error_list.0});
+          console.log({error_result_list.0});
+        </script>-->
+
+
+
+{% if result_error_list.0 == 201 %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="centerPopUpArea" ng-if="GlobalController.getGenePopUpFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                        {% for gene_name in result_error_list.1 %}
+                            {% if not forloop.last %}
+                                "{{ gene_name }}",
+                            {% elif forloop.last %}
+                                "{{ gene_name }}"
+                            {% endif %}
+                        {% endfor %}에 해당하는 Gene 정보가 Kegg Database에 존재하지 않습니다.
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setGenePopUpFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+{% elif result_error_list.0 == 202 %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="centerPopUpArea" ng-if="GlobalController.getGenePopUpFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                    {% for gene_name in result_error_list.1 %}
+                        {% if not forloop.last %}
+                            "{{ gene_name }}",
+                        {% elif forloop.last %}
+                            "{{ gene_name }}"
+                        {% endif %}
+                    {% endfor %}
+                    에 해당하는 Gene 정보와
+                    {% for pathway_name in result_error_list.2 %}
+                        {% if not forloop.last %}
+                            "{{ pathway_name }}",
+                        {% elif forloop.last %}
+                            "{{ pathway_name }}"
+                        {% endif %}
+                    {% endfor %}
+                    Gene을 포함하는 Pathway 정보가 Kegg Database에 존재하지 않습니다.
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setGenePopUpFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+ {% elif result_error_list.0 == 205 %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="centerPopUpArea" ng-if="GlobalController.getPathwayPopUpFlag()==true">
+        <div id="centerPopUpAreaBackground"></div>
+        <div id="centerPopUpBox">
+            <div id="centerPopUpTextWrapper">
+                <div id="centerPopUpText">
+                    {% for pathway_name in result_error_list.2 %}
+                        {% if not forloop.last %}
+                            "{{ pathway_name }}",
+                        {% elif forloop.last %}
+                            "{{ pathway_name }}"
+                        {% endif %}
+                    {% endfor %}
+                    를 포함하는 Pathway 정보가 Kegg Database에 존재하지 않습니다.
+                </div>
+            </div>
+            <a id="centerPopUpCloseButton" ng-click="GlobalController.setPathwayPopUpFlag(false)" href="">
+                Close
+            </a>
+        </div>
+    </div>
+{% elif result_error_list.0 == 208  %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="centerPopUpArea" ng-if="GlobalController.getInputErrorPopupFlag()==true">
+        <div id="centerPopUpAreaBackground"></div>
+        <div id="centerPopUpBox">
+            <div id="centerPopUpTextWrapper">
+                <div id="centerPopUpText">
+                    라인당 입력 값은 유전자 이름과 배경색 이름으로 최대 2개입니다. &ltex&gt ACE red
+                </div>
+            </div>
+            <a id="centerPopUpCloseButton" ng-click="GlobalController.setInputErrorPopupFlag(false)" href="">
+                Close
+            </a>
+        </div>
+    </div>
+{% elif result_error_list.0 == 209  %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="centerPopUpArea" ng-if="GlobalController.getInputErrorPopupFlag()==true">
+        <div id="centerPopUpAreaBackground"></div>
+        <div id="centerPopUpBox">
+            <div id="centerPopUpTextWrapper">
+                <div id="centerPopUpText">
+                두번째 입력 값인 배경색은 소문자로 입력되어야합니다. &ltex&gt AGT white
+                </div>
+            </div>
+            <a id="centerPopUpCloseButton" ng-click="GlobalController.setInputErrorPopupFlag(false)" href="">
+                Close
+            </a>
+        </div>
+    </div>
+{% elif result_error_list.0 == 210  %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="centerPopUpArea" ng-if="GlobalController.getInputErrorPopupFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                        라인당 입력 값은 유전자 이름과 배경색 이름으로 최대 2개이며, 두번째 입력 값인 배경색은 소문자로 입력되어야합니다. &ltex&gt CPA #7f7eff
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setInputErrorPopupFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+{% elif result_error_list.0 == 211  %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="centerPopUpArea" ng-if="GlobalController.getNoGenePopUpFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                        {% verbatim %} {{noGenePopUpText}} {% endverbatim %}
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setNoGenePopUpFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+{% elif result_error_list.0 == 212  %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+    <div class="centerPopUpArea" ng-if="GlobalController.getInputErrorPopupFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                        유전자 최소 3개를 포함하는 Pathway가 존재하지 않습니다.
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setInputErrorPopupFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+{% else %}
+    <div id="popUpWrapperArea">
+        <div class="popUpArea" ng-init="GlobalController.setPopupText('Optimization')" ng-if="GlobalController.getOptimizationPopUpFlag()==true">
+            <div id="popUpTextWrapper">
+                {% verbatim %} {{popUpText}} {% endverbatim %}
+            </div>
+            <div id="closeButton" ng-click="GlobalController.setOptimizationPopUpFlag(false)">
+                <img src="{% static 'image/close-button.png' %}" />
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% if error_result_list.0 == 101 %}
+        <div class="centerPopUpArea" ng-if="GlobalController.getNoInputPopUpFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                        {% verbatim %} {{noInputPopUpText}} {% endverbatim %}
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setNoInputPopUpFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+        </div>
+{% elif error_result_list.0 == 102 %}
+    <div class="centerPopUpArea" ng-if="GlobalController.getReversedRegionPopUpFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                        {% for error_result_list_element in error_result_list.1%}
+                            {% if not forloop.last %}
+                                {{error_result_list_element}},
+                            {% else %}
+                                {{error_result_list_element}}
+                            {% endif %}
+                        {% endfor%}
+                        {% verbatim %}{{reversedRegionPopUpFText}} {% endverbatim %}
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setReversedRegionPopUpFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+{% elif error_result_list.0 == 103 %}
+    <div class="centerPopUpArea" ng-if="GlobalController.getRegionMaxmiumPopUpFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                    {% for error_result_list_element in error_result_list.2%}
+                        {% if not forloop.last %}
+                            {{error_result_list_element}},
+                        {% else %}
+                            {{error_result_list_element}}
+                        {% endif %}
+                    {% endfor%}
+                    {% verbatim %} {{regionMaxmiumPopUpText}} {% endverbatim %}
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setRegionMaxmiumPopUpFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+{% elif error_result_list.0 == 104 %}
+    <div class="centerPopUpArea" ng-if="GlobalController.getNoDatabasePopUpFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                        {% verbatim %} {{noDatabasePopUpText}} {% endverbatim %}
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setNoDatabasePopUpFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+{% elif error_result_list.0 == 105%}
+    <div class="centerPopUpArea" ng-if="GlobalController.getNoGenePopUpFlag()==true">
+            <div id="centerPopUpAreaBackground"></div>
+            <div id="centerPopUpBox">
+                <div id="centerPopUpTextWrapper">
+                    <div id="centerPopUpText">
+                        {% verbatim %} {{noGenePopUpText}} {% endverbatim %}
+                    </div>
+                </div>
+                <a id="centerPopUpCloseButton" ng-click="GlobalController.setNoGenePopUpFlag(false)" href="">
+                    Close
+                </a>
+            </div>
+    </div>
+    {% elif error_result_list.0 == 106%}
+        <div class="centerPopUpArea" ng-if="GlobalController.getNoGenePopUpFlag()==true">
+                <div id="centerPopUpAreaBackground"></div>
+                <div id="centerPopUpBox">
+                    <div id="centerPopUpTextWrapper">
+                        <div id="centerPopUpText">
+                            {% verbatim %} {{unCorrectRegularExpression}} {% endverbatim %}
+                        </div>
+                    </div>
+                    <a id="centerPopUpCloseButton" ng-click="GlobalController.setNoGenePopUpFlag(false)" href="">
+                        Close
+                    </a>
+                </div>
+        </div>
+{% else %}
+{% endif %}
+    <div id="genometraxMoreExamplesPopUpWrapper" ng-if="GlobalController.getGenomtraxMoreExamplesPopUpFlag() == true">
+        <div id="genometraxMoreExamplesPopUp"></div>
+        <div id="genometraxMoreExamplesPopUpBox">
+            <a id="genometraxMoreExamplesPopUpCloseButton" ng-click="GlobalController.setGenomtraxMoreExamplesPopUpFlag(false)" href="">
+                <img src="{% static 'image/letter-x.png' %}"/>
+            </a>
+            <div id="genometraxMoreExamplesfirstLineTextWrapper">
+                <div id="genometraxMoreExamplesFirstLineZeroText">
+                    Input Format =>
+                </div>
+                <div id="genometraxMoreExamplesFirstLineFirstText">
+                    [Genome Coordinate]
+                </div>
+                <div id="genometraxMoreExamplesFirstLineSecondText">
+                    &lsaquo;Space&rsaquo;
+                </div>
+                <div id="genometraxMoreExamplesFirstLineThirdText">
+                    [Nucleotide Change]
+                </div>
+                <div id="genometraxMoreExamplesFirstLineFourthText">
+                    &lsaquo;Space&rsaquo;
+                </div>
+                <div id="genometraxMoreExamplesFirstLineFifthText">
+                    [Gene Name]
+                </div>
+            </div>
+            <div id="genometraxMoreExamplesSecondLineTextWrapper">
+                <div id="genometraxMoreExamplesSecondLineFirstText">
+                    chr1:877523-966155
+                </div>
+            </div>
+            <div id="genometraxMoreExamplesThirdLineTextWrapper">
+                <div id="genometraxMoreExamplesThirdLineFirstText">
+                    chr2:1137434-1905743
+                </div>
+                <div id="genometraxMoreExamplesThirdLineSecondText">
+                    A>G
+                </div>
+            </div>
+            <div id="genometraxMoreExamplesFourthLineTextWrapper">
+                <div id="genometraxMoreExamplesFourthLineFirstText">
+                    chr6:46545454-47345454
+                </div>
+                <div id="genometraxMoreExamplesFourthLineSecondText">
+                    PLA2G7
+                </div>
+            </div>
+            <div id="genometraxMoreExamplesFifthLineTextWrapper">
+                <div id="genometraxMoreExamplesFifthLineFirstText">
+                    chr11:20622937-20676319
+                </div>
+                <div id="genometraxMoreExamplesFifthLineSecondText">
+                    delT
+                </div>
+                <div id="genometraxMoreExamplesFifthLineThirdText">
+                    SLC6A5
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="keggMoreExamplesPopUpWrapper" ng-if="GlobalController.getKeggMoreExamplesPopUpFlag() == true">
+        <div id="keggMoreExamplesPopUp"></div>
+        <div id="keggMoreExamplesPopUpBox">
+            <a id="keggMoreExamplesPopUpCloseButton" ng-click="GlobalController.setKeggMoreExamplesPopUpFlag(false)" href="">
+                <img src="{% static 'image/letter-x.png' %}"/>
+            </a>
+            <div id="keggMoreExamplesfirstLineTextWrapper">
+                <div id="keggMoreExamplesFirstLineZeroText">
+                    Input Format =>
+                </div>
+                <div id="keggMoreExamplesFirstLineFirstText">
+                    [HGNC gene symbol]
+                </div>
+                <div id="keggMoreExamplesFirstLineSecondText">
+                    &lsaquo;Space&rsaquo;
+                </div>
+                <div id="keggMoreExamplesFirstLineThirdText">
+                    [Background Color]
+                </div>
+            </div>
+            <div id="keggMoreExamplesSecondLineTextWrapper">
+                <div id="keggMoreExamplesSecondLineFirstText">
+                    AGT
+                </div>
+            </div>
+            <div id="keggMoreExamplesThirdLineTextWrapper">
+                <div id="keggMoreExamplesThirdLineFirstText">
+                    ACE1
+                </div>
+                <div id="keggMoreExamplesThirdLineSecondText">
+                    red
+                </div>
+            </div>
+            <div id="keggMoreExamplesFourthLineTextWrapper">
+                <div id="keggMoreExamplesFourthLineFirstText">
+                    MAS1
+                </div>
+                <div id="keggMoreExamplesFourthLineSecondText">
+                    #cf7c11
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="titleArea">
+            <a href="/index/" id="linkArea">
+                <div id="mainTitle">
+                    <img src="{% static 'image/intro_logo.png' %}"/>
+                </div>
+                <div id="subTitle">
+                    의생명연구원
+                </div>
+                <div id="subDetailTitle">
+                    임상의과학정보실
+                </div>
+            </a>
+        </div>
+        <div id="menuBackgroundArea">
+        </div>
+        <div class="tabArea">
+            <div id="menuArea">
+                <div class="row menuHeight">
+                    <div class="col-xs-3 col-md-3 nopadding">
+                        <div class="normalMenuButtonWrapper">
+                            <div class="normalMenuButton">About</div>
+                            <div class="subMenuButton">
+                                <a href="/show_people/">People</a>
+                                <a href="/show_organization_chart/">Organization Chart</a>
+                                <a href="/show_server_architecture/">Server Architecture</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 nopadding">
+                        <div class="normalMenuButtonWrapper">
+                            <div class="normalMenuButton">Service</div>
+                            <div class="subMenuButton">
+                                <!--<a href="/show_genometrax/">Genometrax</a>-->
+                                <a href="/show_genometrax_get/">Genometrax</a> <!-- GET을 대비하여 추가 -->
+                                <a href="/show_kegg/">Kegg Mapper</a>
+<!--                                 <a href="/show_tcga/">TCGA</a>
+ -->                            </div>
+                        </div>
+                    </div>
+<!--                     <div class="col-xs-3 col-md-3 nopadding">
+                        <div class="normalMenuButtonWrapper">
+                            <div class="normalMenuButton">Article</div>
+                            <div class="subMenuButton">
+                                <a href="/show_r_page/1/">R</a>
+                            </div>
+                        </div>
+                    </div>
+ -->                <div class="col-xs-3 col-md-3 nopadding">
+                        <div class="normalMenuButtonWrapper">
+                            <div class="normalMenuButton">Support</div>
+                            <div class="subMenuButton">
+                                <a href="/show_analysis/">Analysis</a>
+                                <a href="/show_server_rent/">Server Rent</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-md-3 nopadding">
+                       <div class="normalMenuButtonWrapper">
+                           <div class="normalMenuButton"><a href="/show_main_link/">CDM</a></div>
+                           <!--
+                           <div class="subMenuButton">
+                               <a href="/show_analysis/">Analysis</a>
+                               <a href="/show_server_rent/">Server Rent</a>
+                           </div>
+                         -->
+                       </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

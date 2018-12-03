@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div id="activeInputArea" ng-controller="ServiceController as ServiceController">
+        <form action="/show_kegg/" enctype="multipart/form-data" id="keggInputArea" method="post" target="_blank">
+            <div id="keggText">
+                Search pathway on HGNC gene symbols
+            </div>
+            <div id="keggExampleText">
+                (e.g. BRCA1 red)
+            </div>
+            <a ng-click="GlobalController.setKeggMoreExamplesPopUpFlag(true)" href="">
+                <div id="keggMoreExampleButton">
+                    More Examples
+                </div>
+            </a>
+            <a ng-click="GlobalController.setKeggExplanationPopUpFlag(true)" href="">
+                <div id="keggUsageButton">
+                    How to use
+                </div>
+            </a>
+            <div id="keggBackgroundArea">
+            <div ng-init="ServiceController.setDbTabText('Kegg')" id="keggTextAreaHeight">
+                <div class="scrollbar" id="keggTextInputWrapper">
+                    <textarea cols="40" rows="10" id="keggTextInput" name="input_kegg_text" {% verbatim %}placeholder="{{keggTextPlaceHolderValue}}" ng-focus="ServiceController.clearKeggPlaceHolderValue()" ng-blur="ServiceController.fillKeggPlaceHolderValue()" {% endverbatim %}></textarea>
+                </div>
+            </div>
+            </div>
+            <div id="keggInputTextLine"></div>
+            <button id="keggSubmitButton" type="submit">
+                    Submit
+            </button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

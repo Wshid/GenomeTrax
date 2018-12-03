@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div id="activeInputArea" ng-controller="ServiceController as ServiceController">
+    	<div id="tcgaArea">
+    		<div id="tumorSelectWrapper">
+    			<div id="selectTumorText">Select a tumor</div>
+    			<div id="selectTumorList">
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('BRCA')==true}" ng-click="ServiceController.selectTumorElement('BRCA')">BRCA</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('COAD')==true}" ng-click="ServiceController.selectTumorElement('COAD')">COAD</div>
+	    			<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('HNSC')==true}" ng-click="ServiceController.selectTumorElement('HNSC')">HNSC</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('KIRC')==true}" ng-click="ServiceController.selectTumorElement('KIRC')">KIRC</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('KIRP')==true}" ng-click="ServiceController.selectTumorElement('KIRP')">KIRP</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('LIHC')==true}" ng-click="ServiceController.selectTumorElement('LIHC')">LIHC</div>
+	    			<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('LUAD')==true}" ng-click="ServiceController.selectTumorElement('LUAD')">LUAD</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('LUSC')==true}" ng-click="ServiceController.selectTumorElement('LUSC')">LUSC</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('OV</')==true}" ng-click="ServiceController.selectTumorElement('OV</')">OV</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('PRAD')==true}" ng-click="ServiceController.selectTumorElement('PRAD')">PRAD</div>
+	    			<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('STAD')==true}" ng-click="ServiceController.selectTumorElement('STAD')">STAD</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('THCA')==true}" ng-click="ServiceController.selectTumorElement('THCA')">THCA</div>
+    				<div class="tumorListElement" ng-class="{tumorListSelectedElement:ServiceController.isTumorSelected('UCEC')==true}" ng-click="ServiceController.selectTumorElement('UCEC')">UCEC</div>
+				</div>    			
+    		</div>
+    		<div id="tcgaSearchAreaWrapper">
+    			<div id="tcgaSearchText">Enter a HGNC gene symbol</div>
+    			<div id="tcgasearchBoxWrapper">
+    				<form action="/show_tcga/"  enctype="multipart/form-data" id="tcgaInputArea" method="post" target="_blank">
+	    				    <input type="hidden" maxlength="200" name="tumor_name_text" ng-value="ServiceController.getTumorName()" />
+	    				    <input type="text" id="tcgaTextInput" name="input_tcga_text" size="20" maxlength="25" />
+                            <button type="submit">
+                            	<img id="tcgaSubmitButtonImage" src="{% static 'image/search.png' %}"/>
+                            </button>
+                    {% csrf_token %}
+                    </form>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div id="normalContentArea">
+    <div id="introPage" ng-if="GlobalController.isSelected('Intro')">
+        <div id="introDetail">
+            임상의과학정보실은 병원 내 연구자들의 데이터 통합분석을 위한 허브입니다.
+            임상의과학정보실은 지금까지 분산돼 있던 데이터를 한곳에 모으고, 연구자들에게 
+            다양한 종류의 내부 및 외부 데이터와 분석 솔루션을 안정적으로 제공하고자 합니다.
+            <br/>
+        </div>
+         <div id="introImageWrapper">
+            <img src="{% static 'image/intro_image.png' %}" />
+        </div>
+    </div>
+</div>
+{% endblock %}

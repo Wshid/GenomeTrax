@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!--
+Hello World!
+<div id="activeContentTitle">
+  Database Link
+</div>
+<div id="activeContentLine">
+</div>
+<div id="activeContentArea">
+  DEF
+</div>
+<div class="scrollableArea" id="activeContentArea">
+  d
+  </br/>
+  f
+</div>-->
+<div id="normalContentArea">
+    <!--<div class="imageWrapper" style="position:absolute; top:10px;">-->
+    <div class="imageWrapper">
+        <img src="{% static 'image/cdm_specification.png' %}" style="height:auto;" />
+    </div>
+    <div class="imageWrapper" style="position:absolute; top:700px;">
+        <a target="_blank" style="color:#148cd2; width:100%; font-size:150%; font-family: 'THE도담R';">서울대병원 OMOP Common Data Model 테이블 요약 </a>
+        <br>
+        <br>
+        <a target="_blank" style="color:#148cd2; width:100%; font-size:150%; font-family: 'THE도담R';">서울대병원 OMOP Common Data Model 용어 매핑 테이블 </a>
+        <li><a href="https://docs.google.com/spreadsheets/d/13J9CZlKB7VABvV8lsGTNAKSu7n7DjnO5BbTwpFr7c4Y/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Measurement_lab (진단검사)</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1kzTgeRVEhL8KtZuUWfJlljZDvCM_rQ2tzTNvezwB73M/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Measurement_lab (핵의학)</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1ssaqAihbLO75jBVfAVaMPb7s830qCeqdOeGuNITWXbc/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Measurement_vital</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/12kCPAr1zCJca6bEAldkefDxyRL3L46J0lWwhDiML1oE/edit" target="_blank" style="color:#148cd2; font-size:150%">Drug</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1XpfZcyLUg8ghCVoc9oMcpcjKS4e4DEX_t08zW0ogOOQ/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Drug Route</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1b0aWrfNYlXQaPkqnz_AVTNn-vpymh0v_cV0FVBDlykY/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Drug Route Source</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1hL911XlmR8hV2UTvH6jMzDgX8n-QY5HSGi0UbaW6mRE/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Procedure</a></li>
+<!--        <li><a href="https://docs.google.com/spreadsheets/d/1b0aWrfNYlXQaPkqnz_AVTNn-vpymh0v_cV0FVBDlykY/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Observation</a></li>-->
+<!--        <li><a href="https://docs.google.com/spreadsheets/d/124IfzFCE8A394o74NMX9rbSueO_EZyS5f_vl7mYOf8c/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Chief Complaint</a></li>-->
+<!--        <li><a href="https://docs.google.com/spreadsheets/d/1ZKvgt-auE7rDu7onyMcy_nJmWeT-ZrFv2KhYnFTwh6E/edit?usp=sharing" target="_blank" style="color:#148cd2; font-size:150%">Diagnosis</a></li>-->
+        <!--<li><a target="_blank" style="color:#148cd2; font-size:150%">[TODO] Drug Unit</a></li>
+        <li><a target="_blank" style="color:#148cd2; font-size:150%">[TODO] Value as Concept ID</a></li>-->
+        <!--<br>
+        <li><a style="color:#148cd2; width:100%; font-size:150%; font-family: 'THE도담R';">OMOP CDM Data Table 구성:</a></li>-->
+    </div>
+</div>
+
+
+{% endblock %}

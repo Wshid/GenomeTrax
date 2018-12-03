@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div id="activeInputArea" ng-controller="ServiceController as ServiceController">
+        <div ng-class="{inputActiveWrapperArea:ServiceController.getCurrentInputStatus()!=initStatus, inputWrapperArea:ServiceController.getCurrentInputStatus()==initStatus}">
+        </div>
+        <div class="inputOptionArea" ng-class="{inactiveInputOptionArea:ServiceController.getInputTabFlag()==false}">
+            {% verbatim %}
+            <button ng-click="ServiceController.setInputTabText('Input Type')" class="selectMainText" ng-class="{activeSelectMainText:ServiceController.getInputTabText()=='Input Type', selectedMainText:ServiceController.getInputTabText()!='Input Type'}"> {{ firstTabText }} 
+            {% endverbatim %}
+            <div class="selectArrowImage">
+                <img src="{% static 'image/arrows.png' %}">
+            </div>
+            </button>
+            <button ng-click="ServiceController.setInputTabText('List Text')" ng-if="ServiceController.getInputTabFlag()" class="selectSubFirstText">List Text
+            </button>
+            <button ng-click="ServiceController.setInputTabText('List File')" ng-if="ServiceController.getInputTabFlag()" class="selectSubSecondText">List File
+            </button>
+        </div>
+        <div class="dbOptionArea" ng-class="{inactiveDbOptionArea:ServiceController.getDbTabFlag()==false}">
+            {% verbatim %}
+            <button ng-click="ServiceController.setDbTabText('DB Type')" class="selectMainText" ng-class="{activeSelectMainText:ServiceController.getDbTabText()=='DB Type', selectedMainText:ServiceController.getDbTabText()!='DB Type'}"> {{ secondTabText }}
+            {% endverbatim %}
+              <div class="selectArrowImage">
+                <img src="{% static 'image/arrows.png' %}">
+            </div>
+        </button>
+        <button ng-click="ServiceController.setDbTabText('Genome Trax')" ng-if="ServiceController.getDbTabFlag()" class="selectSubFirstText">Genome Trax</button>
+        <button ng-click="ServiceController.setDbTabText('Kegg')" ng-if="ServiceController.getDbTabFlag()" class="selectSubSecondText">Kegg</button>
+        </div>
+    <form action="" ng-class="{inputTextArea:ServiceController.getCurrentInputStatus()==textInputStatus, inputTextFileArea:ServiceController.getCurrentInputStatus()==textFileInputStatus}" ng-if="ServiceController.getCurrentInputStatus()!=initStatus" enctype="multipart/form-data" method="post">
+        <div id="textAreaHeight">
+            <input type="hidden" maxlength="30" name="selected_input" ng-value="ServiceController.getInputTabText()" type="text">
+            <input type="hidden" maxlength="30" name="selected_db" ng-value="ServiceController.getDbTabText()" type="text">
+            <div ng-if="ServiceController.getCurrentInputStatus()==textInputStatus" class="scrollbar" id="textInputBox">
+                <textarea cols="40" id="textInput" name="input_text" rows="10" {% verbatim %}placeholder="{{textPlaceHolderValue}}" ng-focus="ServiceController.clearPlaceHolderValue()" ng-blur="ServiceController.fillPlaceHolderValue()" {% endverbatim %}></textarea>
+                <div id="inputTextLine"></div>
+            </div>
+            <div ng-if="ServiceController.getCurrentInputStatus()==textFileInputStatus" class="inputTextFileWrapper">
+                <label class="inputTextFile">
+                    <input type="file" name="input_text_file" onchange="angular.element(this).scope().setTextFilePlaceHolderValue(this)">
+                </label>
+                <input class="uploadTextFile" {% verbatim %}placeholder="{{textFilePlaceHolderValue}}" {% endverbatim %} disabled="disabled" />
+                <div id="inputTextFileLine"></div>
+            </div>
+            <button id="submitButton" type="submit">
+                Submit
+            </button>
+        </div>
+    {% csrf_token %}
+    </form>
+    </div>
+{% endblock %}

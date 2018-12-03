@@ -1,0 +1,973 @@
+﻿.spinner {
+  margin: 25% auto 0;
+  width: 500px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+
+.popUpArea{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  border-bottom: 0.1em solid #ffffff;
+  background-color: #118CCF;
+}
+
+.centerPopUpArea{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 105;
+}
+
+.tabArea{
+  z-index: 50;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 20%;
+  width: 40%;
+  height: 4%;
+  color: #ffffff;
+  margin: auto;
+  left: 0;
+  right: 0;
+
+}
+
+.normalMenuButtonWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.normalMenuButtonWrapper:hover {
+    background-color: #118CCF;
+}
+
+.normalMenuButtonWrapper:hover .subMenuButton {
+    display: block;
+}
+
+.subMenuButton {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #118CCF;
+    width: 100%;
+    height: 100%;
+    font-family: "나눔고딕";
+    font-size: 1.5vh;
+}
+
+.subMenuButton a{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    height: 100%;
+    color: #ffffff;
+    background-color: #118CCF;
+    border-top: 0.05em solid white;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+.subMenuButton a:hover {
+  background-color: #0F80BD;
+}
+
+.subMenuButton a:active {
+  background-color: #F7F7F7;
+  color: #118CCF;
+}
+
+.normalMenuButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  font-family: "나눔고딕";
+  font-size: 1.5vh;
+  z-index: 10;
+}
+
+.normalMenuButton:hover {
+  background-color: #0F80BD;
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100%;
+}
+
+.menuHeight {
+  height: 100%;
+}
+
+.subMenuHeight {
+  height: 50%;
+}
+
+.articleHeight {
+  height: 40%;
+  margin-top: 0.5%;
+}
+
+.articleIntroWrapper {
+  position: relative;
+  width: 95%;
+  height: 100%;
+  display: block;
+  font-family: "THE도담R";
+  color: #118CCF;
+}
+
+.articlePicture {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0%;
+  height: 100%;
+  color: #118CCF;
+  font-size: 1.6vh;
+  text-align: center;
+}
+
+.articleImage {
+  border-radius: 3%;
+}
+
+.articleName {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  height: 20%;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  background: #118CCF;
+  color: #ffffff;
+  opacity: 0.8;
+  border-radius: 0 0 1vh 1vh;
+}
+
+.articleNameText {
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+  color: #ffffff;
+  font-size: 1.2vh;
+  margin: auto;
+  top: 87%;
+  text-align: center;
+  opacity: 1;
+}
+
+.articleMargin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  top: 35%;
+  left: 25%;
+  width: 100%;
+  height: 10%
+}
+
+.articleWrapper {
+  position: relative;
+  display: block;
+  color: #118CCF;
+}
+
+.articleText {
+  color: #118CCF;
+  font-family: "나눔고딕Bold";
+  font-size: 1.5vh;
+}
+
+.articleForm {
+  position: relative;
+  display: flex;
+  color: #000000;
+  font-family: "나눔고딕Bold";
+  font-size: 1.5vh;
+}
+
+.saveButton {
+  position: relative;
+  display: block;
+  top: 20%;
+}
+
+.scrollableArea {
+  overflow-y: auto;
+}
+
+.articleLinkArea {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: #00378C;
+  height: 100%;
+}
+
+.nameTextKorean {
+  font-size: 4vh;
+}
+
+.nameTextEnglish {
+  font-size: 2vh;
+}
+
+.linkNopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100%;
+}
+
+.linkHeight {
+  height: 40%;
+  margin-top: 3%;
+}
+
+.hiddenArticleHeight {
+  height: 40%;
+  margin-top: 0.5%;
+}
+
+.linkWrapper {
+  position: relative;
+  width: 95%;
+  height: 100%;
+  display: block;
+  font-family: "THE도담R";
+  color: #118CCF;
+}
+
+.linkPicture {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0%;
+  height: 100%;
+  color: #118CCF;
+  font-size: 1.6vh;
+  text-align: center;
+}
+
+.linkImage {
+  border-radius: 3%;
+}
+
+.linkName {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  height: 20%;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  background: #118CCF;
+  color: #ffffff;
+  opacity: 0.8;
+  border-radius: 0 0 1vh 1vh;
+}
+
+.linkNameText {
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+  color: #ffffff;
+  font-size: 1.2vh;
+  margin: auto;
+  top: 87%;
+  text-align: center;
+  opacity: 1;
+}
+
+.linkArea {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: #00378C;
+  height: 25vmin;
+}
+
+.pagination>li.active>a {
+  background: #118CCF;
+  border-color: #118CCF;
+}
+
+.pagination>li>a {
+  color: #118CCF;
+}
+
+.selectMainText {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 10%;
+  text-align: center;
+  font-size: 1.3vh;
+  color: #ffffff;
+  font-family: "나눔고딕";
+  background-color: #00378C;
+  border: 0.1vh solid #ffffff;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.activeSelectMainText {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 33%;
+  text-align: center;
+  font-size: 1.3vh;
+  color: #ffffff;
+  font-family: "나눔고딕";
+  background-color: #00378C;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+
+.selectedMainText {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 33%;
+  text-align: center;
+  font-size: 1.3vh;
+  color: #ffffff;
+  font-family: "나눔고딕";
+  background-color: #118CCF;
+  border-top: 0.1vh solid #ffffff;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.selectSubFirstText {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 33%;
+  text-align: center;
+  font-size: 1.3vh;
+  color: #00378C;
+  font-family: "나눔고딕";
+  background-color: #118CCF;
+  border-left: 0.1vh solid #ffffff;
+  border-right: 0.1vh solid #ffffff;
+  border-bottom: 0.1vh solid #ffffff;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.selectSubSecondText {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 33%;
+  text-align: center;
+  font-size: 1.3vh;
+  color: #00378C;
+  font-family: "나눔고딕";
+  background-color: #118CCF;
+  border-left: 0.1vh solid #ffffff;
+  border-right: 0.1vh solid #ffffff;
+  border-bottom: 0.1vh solid #ffffff;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.selectSubThirdText {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 33%;
+  text-align: center;
+  font-size: 1.3vh;
+  color: #00378C;
+  font-family: "나눔고딕";
+  background-color: #118CCF;
+  border-left: 0.1vh solid #ffffff;
+  border-right: 0.1vh solid #ffffff;
+  border-bottom: 0.1vh solid #ffffff;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+
+.selectArrowImage {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  width: 5%;
+  height: 20%;
+}
+
+.inputWrapperArea {
+
+  position: absolute;
+  height : 10%;
+  width: 35%;
+  align-items: center;
+  border-radius: 1vh;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 10%;
+  left: 0;
+  background-color: #00378C;
+}
+
+.inputActiveWrapperArea {
+
+  position: absolute;
+  height : 10%;
+  width: 35%;
+  align-items: center;
+  border-radius: 1vh 1vh 0vh 0vh;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 10%;
+  left: 0;
+  background-color: #00378C;
+}
+
+.inputOptionArea {
+  position: absolute;
+  z-index: 2;
+  width: 10%;
+  height: 12%;
+  left: 37%;
+  top: 13%;
+  border-radius: 1vh;
+  text-align: center;
+  font-size: 1.5vh;
+  font-family: "나눔고딕";
+}
+
+.inactiveInputOptionArea {
+  z-index: 0;
+}
+
+
+.dbOptionArea {
+  position: absolute;
+  z-index: 2;
+  width: 10%;
+  height: 12%;
+  left: 53%;
+  top: 13%;
+  border-radius: 1vh;
+  text-align: center;
+  font-size: 1.5vh;
+  font-family: "나눔고딕";
+}
+
+.inactiveDbOptionArea {
+  z-index: 0;
+}
+
+.keggResultArea {
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+  height: 95%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 5%;
+}
+
+.geneInfoWrapper {
+  display: block;
+  height: 10%;
+}
+
+.geneInfo {
+  display: block;
+  width: 70%;
+  height: 30%;
+  margin-left: 8%;
+}
+
+.geneInfoText:link {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 90%;
+  color: #118CCF;
+  font-size: 1.5vh;
+  line-height: 1.5vh;
+  font-family: "THE도담R";
+}
+
+.geneInfoText:visited {
+  color: #118CCF;
+  margin: auto;
+}
+
+.pathwayImage {
+  position: relative;
+  display: block;
+  width: 90%;
+  height: 80%;
+  left: 5%;
+  zoom: 2;
+}
+
+.keggResultArea::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #ffffff;
+}
+
+.keggResultArea::-webkit-scrollbar
+{
+  width: 1em;
+}
+
+.keggResultArea::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #118CCF;
+}
+
+.checkBoxWrapper {
+  position: relative;
+  width: 2%;
+  height: 25%;
+  top: 50%;
+  left: 5%;
+}
+
+.downloadCheckBoxImage {
+  position: absolute;
+  display: block;
+  z-index: 4;
+  top: 3%;
+  left: 5%;
+  width: 100%;
+  height: 100%;
+
+}
+
+.downloadCheckImage {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  top: 3%;
+  left: 20%;
+  width: 70%;
+  height: 70%;
+
+}
+
+.inputTextArea {
+  position: absolute;
+  width: 35%;
+  height: 40%;
+  left: 32.5%;
+  top: 20.1%;
+  background-color: #00378C;
+  border-radius: 0 0 1vh 1vh;
+  text-align: center;
+}
+
+.inputTextFileArea {
+  position: absolute;
+  width: 35%;
+  height: 15%;
+  left: 32.5%;
+  top: 20.1%;
+  background-color: #00378C;
+  border-radius: 0 0 1vh 1vh;
+  text-align: center;
+}
+
+
+
+.inputTextFileWrapper {
+  position: relative;
+  height: 40%;
+  width: 100%;
+  margin-bottom: 3.5%;
+}
+
+.inputTextFile{
+    position: relative;
+    width: 20%;
+    height: 31%;
+    left: -25%;
+    top: 58%;
+    font-family: "나눔고딕";
+    color: #ffffff;
+}
+
+.inputTextFile input{
+    visibility: hidden;
+}
+
+.inputTextFile:before {
+   content: 'Attach';
+   line-height: 1.7vh;
+   display: block;
+   width: 100%;
+   height: 100%;
+   border: 0.1em solid #ffffff;
+   font-weight: normal;
+   cursor: pointer;
+   text-align: center;
+   position: absolute;
+   left: 0%;
+   background-color: #ffffff;
+   color: #00378C;
+   font-size: 1.5vh;
+   border-radius: 1vh;
+}
+
+.uploadTextFile {
+
+  position: absolute;
+  line-height: 1.7vh;
+  width: 50.5%;
+  height: 31%;
+  left: 40%;
+  top: 60%;
+  font-family: "나눔고딕";
+  background-color: #00378C;
+  font-size: 1.5vh;
+  border-style: none;
+  text-overflow: ellipsis;
+
+}
+
+.igv_browser_wrapper {
+  position: absolute;
+  left: 26%;
+  width: 48%;
+  height: 70%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.igv_browser_wrapper::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #ffffff;
+}
+
+.igv_browser_wrapper::-webkit-scrollbar
+{
+  width: 1em;
+  background-color: #ffffff;
+}
+
+.igv_browser_wrapper::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #00378C;
+}
+
+
+.igv_browser_iframe {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.ag-blue {
+
+  position: absolute;
+  width: 90%;
+  height: 85%;
+  top: 7.5%;
+  left: 5%;
+  font-size:5pt
+}
+
+.coordinatesSearchInputTextArea {
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  left: 5%;
+  top: 30%;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 2em;
+}
+
+.coordinatesSearchInputTextFileArea {
+  position: absolute;
+  width: 35%;
+  height: 15%;
+  left: 32.5%;
+  top: 20.1%;
+  background-color: #00378C;
+  border-radius: 0 0 1vh 1vh;
+  text-align: center;
+}
+
+.genesSearchInputTextArea {
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  left: 5%;
+  top: 25%;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 2em;
+}
+
+.genesSearchInputTextFileArea {
+  position: absolute;
+  width: 35%;
+  height: 15%;
+  left: 32.5%;
+  top: 20.1%;
+  background-color: #00378C;
+  border-radius: 0 0 1vh 1vh;
+  text-align: center;
+}
+
+.genomeTraxCheckBoxWrapper {
+  position: relative;
+  height: 1.5vmin;
+  width: 100%;
+}
+
+.genomeTraxCheckBoxImage {
+  position: absolute;
+  z-index: 5;
+  left: -1.1vmin;
+  top: -10%;
+  width: 1.2vmin;
+  height: 1.2vmin;
+}
+
+.genomeTraxCheckImage {
+  position: absolute;
+  left: -1vmin;
+  top: -10%;
+  width: 0.9vmin;
+  height: 0.9vmin;
+}
+
+.genomeTraxText {
+  position: absolute;
+  top: 0.2vmin;
+  margin-left: 0.3vmin;
+  font-size: 1.2vmin;
+  line-height: 1.2vmin;
+  cursor: pointer;
+}
+
+.databaseListElement {
+  border-bottom: 0.2vmin solid #ffffff;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: -10%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 93.20vmin;
+  height: 70vmin;
+}
+
+.keggExplanationImageWrapper {
+  position: relative;
+  padding: 2% 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 40%;
+  height: 40%;
+}
+
+.keggExplanationImage {
+  border-radius: 5em;
+}
+
+.keggExplanationText {
+  position: absolute;
+  width: 100%;
+  color: #ffffff;
+  font-family: "THE도담R";
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  font-size: 1.5vmin;
+  color: #ffffff;
+  text-align: center;
+}
+
+.tumorListElement
+{
+  position: relative;
+  margin: auto;
+  width: 25%;
+  height: 5.5%;
+  background-color: #ffffff;
+  border: 0.15em solid #118CCF;
+  font-size: 1.4vmin;
+  line-height: 2vmin;
+  font-family: "THE도담R";
+  color: #118CCF;
+  cursor: pointer;
+}
+
+.tumorListElement:hover
+{
+  background-color: #d9d9d9;
+}
+
+.tumorListElement:active
+{
+  font-size: 1.2vmin;
+  line-height: 2vmin;
+
+}
+
+.tumorListSelectedElement
+{
+  background-color: #118CCF;
+  border: 0.15em solid #ffffff;
+  color: #ffffff;
+}
+
+.resultImageWrapper
+{
+  position: absolute;
+  width: 83.43vmin;
+  height: 9vmin;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 2.5%;
+  z-index: -5;
+}
+
+.tcgaResultImage
+{
+  position: relative;
+  display: inline-block;
+  left: 0.5vmin;
+  width: 15vmin;
+  height: 15vmin;
+}
+
+.tcgaResultWrapper
+{
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 5%;
+  margin: auto;
+  width: 62.5vmin;
+}
+
+.tcgaPathostageTextWrapper
+{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 10vmin;
+  text-align: right;
+}
+
+.tcgaPathostageText
+{
+  position: relative;
+  width: 10vmin;
+  left: -36vmin;
+  right: 0;
+  top: 6.5vmin;
+  font-size: 1.4vmin;
+  font-family: "THE도담R";
+  color: #118CCF;
+}
+
+.tcgaStatisticsTextWrapper
+{
+  position: absolute;
+  top: -12%;
+}
+
+.tcgaStatisticsText
+{
+  position: relative;
+  display: inline-block;
+  width: 15vmin;
+  height: 2vmin;
+  left: 1vmin;
+  text-align: center;
+  font-size: 1.4vmin;
+  font-family: "THE도담R";
+  color: #118CCF;
+}
+
+.main_link_list{
+  font-family: "THE도담R";
+  font-size:1.4vmin;
+  display:inline-block;
+}

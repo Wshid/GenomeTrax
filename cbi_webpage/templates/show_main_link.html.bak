@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<!--
+Hello World!
+<div id="activeContentTitle">
+  Database Link
+</div>
+<div id="activeContentLine">
+</div>
+<div id="activeContentArea">
+  DEF
+</div>
+<div class="scrollableArea" id="activeContentArea">
+  d
+  </br/>
+  f
+</div>-->
+<div id="normalContentArea">
+	<div class="imageWrapper">
+		<img src="{% static 'image/database_main_link.png' %}" style="height:auto;" />
+		<div class="listwrapper" style="position:absolute; top:710px;">
+			<li><a href="https://www.ddduk.org/access.html" target="_blank" style="color:#148cd2; width:100%; font-size:150%; font-family: 'THE도담R';">Deciphering Developmental Disorders (DDD) project</a></li>
+			<li><a href="https://gdc-portal.nci.nih.gov/" target="_blank" style="color:#148cd2; width:100%; font-size:150%; font-family: 'THE도담R';">TCGA RNA-seq</a></li>
+			<li><a href="http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000_genomes_project/data/" target="_blank" style="color:#148cd2; width:100%; font-size:150%; font-family: 'THE도담R';">1000 Genomes</a></li>
+			<li><a href="http://www.ukbiobank.ac.uk/register-apply/" target="_blank" style="color:#148cd2; width:100%; font-size:150%; font-family: 'THE도담R';">UK Biobank</a></li>
+			<li><a href="https://cgc.sbgenomics.com/u/sevenbridges/simons-genome-diversity-project-sgdp/" target="_blank" style="color:#148cd2; width:100%; font-size:150%; font-family: 'THE도담R';">Simons Genome Diversity Project</a></li>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}
